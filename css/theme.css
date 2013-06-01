@@ -1,0 +1,63 @@
+/* Add your custom theme overrides here */
+/* FIXME: move these to a LESS stylesheet */
+
+body {
+	background-color: #fff;
+	/*background-color: #000;*/
+
+}
+
+.footer {
+	padding-bottom: 10px;
+	/*background-color: #ddd;*/
+	/*background-color: #fff;*/
+	
+	/* Light themes */
+	
+	/*border-top: 1px solid #ccc;*/
+
+	/* Dark themes */
+
+	/*border-top: 1px solid #222;*/
+}
+
+.footer .container-narrow .row {
+	border-top: 1px solid #eee;
+}
+
+.header {
+	/* Light themes */
+	
+	/*background-color: #ddd;*/
+	border-bottom: 1px solid #eee;
+	
+	/* Dark themes */
+	
+	/*background-color: #000;*/
+	/*border-bottom: 1px solid #222;*/
+}
+
+.main-section {
+	padding-bottom: 30px;
+	
+	/* Light themes */
+	
+	background-color: white;
+	
+	/* Dark themes */
+
+	/*background-color: #121417*/
+}
+
+#p-logo a:hover {
+	background-color: transparent;
+}
+
+.labstrap-nav-row {
+	margin-top: 10px !important;
+}
+
+.container-narrow {
+	margin: 0 auto;
+	max-width: 900px;
+}
