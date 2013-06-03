@@ -1,31 +1,20 @@
-@import url(bootstrap/css/bootstrap.css);
-@import url(bootstrap/css/bootstrap-responsive.css);
-/*
-@import url(prefs.css);
-*/
-
 /* Font Awesome - http://fortawesome.github.com/Font-Awesome */
-@import url(bootstrap/awesome/css/font-awesome.css);
-
-@import url(theme.css);
-
 html {
   /* Always show a scrollbar, to prevent jumping content */
+
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
 a:not([name]) {
   cursor: pointer;
 }
-
 /* Disable selection */
 .nav a,
 .dropdown-toggle,
 .dropdown-menu,
 .btn,
 .btn a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -33,8 +22,6 @@ a:not([name]) {
   -ms-user-select: none;
   user-select: none;
 }
-
-
 #userbar {
   margin-bottom: 0;
 }
@@ -48,8 +35,10 @@ a:not([name]) {
 #userbar .navbar-search + .nav {
   margin-left: 10px;
 }
+.navigation {
+  /* Search in the navigation */
 
-
+}
 .navigation a,
 .navigation form,
 .navigation input {
@@ -57,8 +46,6 @@ a:not([name]) {
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
 }
-
-/* Search in the navigation */
 .navigation a {
   position: relative;
   z-index: 2;
@@ -69,7 +56,6 @@ a:not([name]) {
   position: relative;
   top: -2.25em;
 }
-
 @media (min-width: 768px) {
   .searchform-disabled input,
   .searchform-enabled a.search-link i,
@@ -82,7 +68,6 @@ a:not([name]) {
     position: absolute;
   }
 }
-
 @media (max-width: 12em) {
   .navigation {
     clear: both;
@@ -105,7 +90,6 @@ a:not([name]) {
     top: 0 !important;
   }
 }
-
 @media (min-width: 768px) and (max-width: 979px) {
   #page-header .searchform-enabled a {
     margin-left: 0;
@@ -113,51 +97,42 @@ a:not([name]) {
     padding-left: 1ex;
     padding-right: 1ex;
   }
-
   .searchform-enabled a.search-link {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
     /*
-    padding: 0;
-    width: 0;
-    */
+      padding: 0;
+      width: 0;
+      */
+  
   }
 }
-
 @media (max-width: 767px) {
   #userbar {
     margin-left: -20px;
     margin-right: -20px;
   }
 }
-
-
 .nolayout .firstHeading {
   margin-top: 10px;
 }
-
-
 /* Fix mediawiki radio & checkbox */
 label {
   display: inline-block;
 }
-
 input[type="radio"],
 input[type="checkbox"] {
   margin-top: 0;
 }
-
 input + label {
   margin-left: 0.5ex;
 }
-
 /* Hide separators if they're first in a menu */
 .dropdown-menu .divider:first-child {
   display: none;
 }
-
 /* Slightly animate the dropdown-menus */
 .dropdown-menu li > a {
   -moz-transition: all 0.1s;
@@ -169,7 +144,6 @@ input + label {
   -webkit-transition: all 0.025s;
   transition: all 0.025s;
 }
-
 /* Split a column in half */
 @media (min-width: 480px) {
   .column-split {
@@ -181,16 +155,13 @@ input + label {
     column-fill: balance;
   }
 }
-
 /* Footer */
-#footer .row  {
-  text-align: center; 
+#footer .row {
+  text-align: center;
 }
-
-#footer .row  a {
+#footer .row a {
   font-weight: normal;
 }
-
 #footer ul,
 #footer li {
   padding: 0;
@@ -204,7 +175,6 @@ input + label {
   display: inline;
   margin: 1ex;
 }
-
 #footer-search {
   display: inline;
   position: relative;
@@ -214,15 +184,11 @@ input + label {
   margin: 0 0 3px 6px;
   opacity: 0.25;
 }
-
-
 /* Make the edit form larger */
 #editform textarea,
-#wpTextbox1
-{
+#wpTextbox1 {
   width: 100%;
 }
-
 /* Hide the [] around edit */
 .editsection {
   font-size: 0;
@@ -230,28 +196,25 @@ input + label {
 .editsection a {
   font-size: 14px;
 }
-
 /* Hide the printable footer */
 .printfooter {
   display: none;
 }
-
 .align-right {
   text-align: right;
 }
-
 .row {
   margin-top: 30px;
 }
-
 .row + .row {
   margin-top: 40px;
 }
-
-input, button, select, textarea {
+input,
+button,
+select,
+textarea {
   font: inherit;
 }
-
 /* Search */
 #mw-search-top-table {
   margin: 3em auto 0;
@@ -262,55 +225,45 @@ input, button, select, textarea {
 #mw-search-top-table input[type=submit] {
   padding: 2px 6px;
 }
-
 #content .search-types li {
   margin-top: 0;
 }
-
 .mw-search-formheader {
   background: none;
   border: none;
 }
-
 .search-types {
   float: none;
   padding: 0;
 }
-
 .mw-search-createlink {
   /* Redundant, if there's a page with containing the name anyway */
+
   display: none;
 }
-
 .mw-search-results {
   margin: 20px;
 }
-
 .searchresult {
   color: #555;
 }
-
 .searchmatch {
   color: #333;
 }
-
 .mw-search-result-data {
   color: #999;
 }
-
 .mw-search-nonefound {
   color: #999;
   font-size: 2em;
   padding: 1em;
   text-align: center;
 }
-
-.mw-search-nonefound:after{
+.mw-search-nonefound:after {
   content: "ಠ ̯ಠ";
   color: #ccc;
   margin-left: 3ex;
 }
-
 .mw-search-pager-bottom {
   position: relative;
   color: transparent;
@@ -319,25 +272,20 @@ input, button, select, textarea {
   float: left;
   padding: 0 20px;
 }
-
 .mw-numlink {
   display: none;
 }
-
 /* Preferences */
 #preferences .mainLegend {
   display: none;
 }
-
 #preftoc {
   margin: 40px 20px -2px;
 }
-
 #preferences {
   border: 1px solid #ccc;
   margin: 0 20px;
 }
-
 #preftoc ul,
 #preftoc li {
   display: inline;
@@ -364,30 +312,24 @@ input, button, select, textarea {
   margin: 0;
   padding: 40px;
 }
-
 #preferences legend {
   border-bottom: none;
 }
-
 #preferences fieldset + fieldset > legend {
   padding-top: 40px;
 }
-
 #preferences .mw-label label {
   white-space: nowrap;
   margin: 0;
   color: #777;
 }
-
 #preferences td {
   padding: 5px;
 }
-
 #preferences .htmlform-tip {
   color: #999;
   padding: 1em 0 3em 12em;
 }
-
 #preferences div.mw-prefs-buttons {
   margin: 20px auto 0;
   padding: 40px 40px 20px;
@@ -406,14 +348,10 @@ input, button, select, textarea {
 .mw-prefs-buttons input {
   float: right;
 }
-
-
 /* History */
-
 #contentSub br {
   display: none;
 }
-
 #mw-revision-info,
 #mw-revision-nav {
   background: #f6f6f6;
@@ -424,7 +362,6 @@ input, button, select, textarea {
   text-align: center;
   width: auto;
 }
-
 #mw-revision-info {
   border-bottom: none;
   border-radius: 6px 6px 0 0;
@@ -437,8 +374,6 @@ input, button, select, textarea {
   margin-top: 0;
   padding-top: 0;
 }
-
-
 /* Add some extra vertical spacing for phones */
 @media (max-width: 767px) {
   [class*="span"] + [class*="span"] {
@@ -446,7 +381,6 @@ input, button, select, textarea {
     margin-top: 40px;
   }
 }
-
 /* Extra padding */
 @media (min-width: 768px) {
   .pad-left-small,
@@ -490,59 +424,116 @@ input, button, select, textarea {
     column-gap: 40px;
   }
 }
-
 section#content a.external,
-section#content a.external[href ^="gopher://"] {
-	/* @embed */
-	background: url(images/external-link-ltr-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="gopher://"] {
+  /* @embed */
+
+  background: url("skins/labstrap/images/external-link-ltr-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href ^="https://"],
-.link-https {
-	/* @embed */
-	background: url(images/lock-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="https://"],
+section#content .link-https {
+  /* @embed */
+
+  background: url("skins/labstrap/images/lock-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href ^="mailto:"],
-.link-mailto {
-	/* @embed */
-	background: url(images/mail-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="mailto:"],
+section#content .link-mailto {
+  /* @embed */
+
+  background: url("skins/labstrap/images/mail-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href ^="news:"] {
-	/* @embed */
-	background: url(images/news-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="news:"] {
+  /* @embed */
+
+  background: url("skins/labstrap/images/news-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href ^="ftp://"],
-.link-ftp {
-	/* @embed */
-	background: url(images/file-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="ftp://"],
+section#content .link-ftp {
+  /* @embed */
+
+  background: url("skins/labstrap/images/file-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href ^="irc://"],
-section#content a.external[href ^="ircs://"],
-.link-irc {
-	/* @embed */
-	background: url(images/talk-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href^="irc://"],
+section#content a.external[href^="ircs://"],
+section#content .link-irc {
+  /* @embed */
+
+  background: url("skins/labstrap/images/talk-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href $=".ogg"], section#content a.external[href $=".OGG"],
-section#content a.external[href $=".mid"], section#content a.external[href $=".MID"],
-section#content a.external[href $=".midi"], section#content a.external[href $=".MIDI"],
-section#content a.external[href $=".mp3"], section#content a.external[href $=".MP3"],
-section#content a.external[href $=".wav"], section#content a.external[href $=".WAV"],
-section#content a.external[href $=".wma"], section#content a.external[href $=".WMA"],
-.link-audio {
-	/* @embed */
-	background: url(images/audio-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href$=".ogg"],
+section#content a.external[href$=".OGG"],
+section#content a.external[href$=".mid"],
+section#content a.external[href$=".MID"],
+section#content a.external[href$=".midi"],
+section#content a.external[href$=".MIDI"],
+section#content a.external[href$=".mp3"],
+section#content a.external[href$=".MP3"],
+section#content a.external[href$=".wav"],
+section#content a.external[href$=".WAV"],
+section#content a.external[href$=".wma"],
+section#content a.external[href$=".WMA"],
+section#content .link-audio {
+  /* @embed */
+
+  background: url("skins/labstrap/images/audio-icon.png") center right no-repeat;
+  padding-right: 13px;
 }
-section#content a.external[href $=".ogm"], section#content a.external[href $=".OGM"],
-section#content a.external[href $=".avi"], section#content a.external[href $=".AVI"],
-section#content a.external[href $=".mpeg"], section#content a.external[href $=".MPEG"],
-.link-video {
-	/* @embed */
-	background: url(images/video-icon.png) center right no-repeat;
-	padding-right: 13px;
+section#content a.external[href$=".ogm"],
+section#content a.external[href$=".OGM"],
+section#content a.external[href$=".avi"],
+section#content a.external[href$=".AVI"],
+section#content a.external[href$=".mpeg"],
+section#content a.external[href$=".MPEG"],
+section#content .link-video {
+  /* @embed */
+
+  background: url("skins/labstrap/images/video-icon.png") center right no-repeat;
+  padding-right: 13px;
+}
+/* Add your custom theme overrides here */
+body {
+  background-color: #fff;
+  /*background-color: #000;*/
+
+}
+.footer {
+  padding-bottom: 10px;
+  /* Light themes */
+
+  /* Dark themes */
+
+}
+.footer .container-narrow .row {
+  border-top: 1px solid #eee;
+}
+.header {
+  /* Light themes */
+
+  border-bottom: 1px solid #eee;
+  /* Dark themes */
+
+}
+.main-section {
+  padding-bottom: 30px;
+  /* Light themes */
+
+  background-color: white;
+  /* Dark themes */
+
+}
+#p-logo a:hover {
+  background-color: transparent;
+}
+.labstrap-nav-row {
+  margin-top: 10px !important;
+}
+.container-narrow {
+  margin: 0 auto;
+  max-width: 900px;
 }

@@ -25,8 +25,8 @@ $wgResourceModules['skins.labstrap'] = array(
         'styles' => array(
                 'labstrap/bootstrap/css/bootstrap.css' => array( 'media' => 'screen' ),
                 'labstrap/bootstrap/css/bootstrap-responsive.css' => array( 'media' => 'screen' ),
-                'labstrap/css/screen.css' => array( 'media' => 'screen' ),
-                'labstrap/css/theme.css' => array( 'media' => 'screen' ),
+                'labstrap/css/labstrap.css' => array( 'media' => 'screen' )//,
+                // 'labstrap/css/theme.css' => array( 'media' => 'screen' ),
 	),
 	'scripts' => array(
 		'labstrap/bootstrap/js/bootstrap.js',

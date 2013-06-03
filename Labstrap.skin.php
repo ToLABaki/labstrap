@@ -236,7 +236,7 @@ if ($this->data['loggedin']) {
             <!-- undelete -->
             <div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
             <!-- /undelete -->
-          <?php endif; ?>
+            <?php endif; ?>
           <?php $this->html( 'bodycontent' ); ?>
         </div>
         <?php } else {
