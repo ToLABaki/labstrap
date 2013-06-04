@@ -1,0 +1,15 @@
+{
+    "name": "labstrap"
+  , "description": "A mediawiki theme built for the tolabaki hackerspace, based on the strapping theme."
+  , "keywords": ["bootstrap", "css", "mediawiki"]
+  , "homepage": "https://code.tolabaki.gr/p/labstrap/"
+  , "author": "Alex Katopodis"
+  , "repository": {
+      "type": "git"
+    , "url": "git://code.tolabaki.gr/labstrap.git"
+  }
+  , "devDependencies": {
+      "uglify-js": "1.3.4"
+    , "less": "1.3.3"
+  }
+}
