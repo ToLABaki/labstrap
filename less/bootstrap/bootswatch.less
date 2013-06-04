@@ -1,0 +1,40 @@
+.toc {
+	background-color: @grayLighter;
+	border: 1px solid darken(@grayLighter, 15%);
+
+	#toctitle h2 {
+		font-size: @baseFontSize;
+		line-height: @baseLineHeight;
+	}
+
+	> tbody > tr > td {
+		padding: 5px;
+		> ul {
+			list-style: none;
+		}
+	}
+}
+
+.mw-normal-catlinks {
+	padding: 5px;
+	background-color: @grayLighter;
+	border: 1px solid darken(@grayLighter, 15%);
+	margin-top: 1em;
+}
+
+input[type="submit"] {
+	.btn;
+}
+
+input[type="submit"].hidden {
+	display: none;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle {
+	.border-radius(5px);
+}
+
+#wpSave,
+#wpLoginAttempt {
+	.btn-primary;
+}

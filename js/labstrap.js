@@ -36,3 +36,13 @@ jQuery(function($) {
   });
 });
 
+$(document).ready(function() {
+  // HACK: Get the login page username text field styled
+  if ($("input.loginText").length !== 0) {
+    $("input.loginText").get(0).type="text";
+  }
+
+  if ($("input.mw-summary").length !== 0) {
+    $("input.mw-summary").get(0).type="text";
+  }
+});
