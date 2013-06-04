@@ -148,7 +148,7 @@ class LabstrapTemplate extends BaseTemplate {
 
 <!-- Header -->
 <header class="header">
-  <div id="page-header" class="container-narrow noprint">
+  <div id="page-header" class="container-narrow  container noprint">
     <div class="row">
       <!-- logo -->
       <div class="pull-left">
@@ -197,7 +197,7 @@ if ($this->data['loggedin']) {
 
 <!-- content -->
 <div class="main-section">
-<section id="content" class="mw-body container-narrow <?php echo $userStateClass; ?>">
+<section id="content" class="mw-body container-narrow container <?php echo $userStateClass; ?>">
   <div id="top"></div>
   <div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
   <?php if ( $this->data['sitenotice'] ): ?>
@@ -325,7 +325,7 @@ if ($this->data['loggedin']) {
 
 <!-- footer -->
 <footer id="footer" class="footer "<?php $this->html( 'userlangattributes' ) ?>>
-  <div class="container-narrow">
+  <div class="container-narrow container">
     <div class="row">
       <?php
       $footerLinks = $this->getFooterLinks();
