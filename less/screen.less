@@ -6,7 +6,7 @@
 
 // @import url(theme.css);
 
-@image-path: "skins/labstrap/images";
+@image-path: "skins/labstrap/images/mono-black";
 
 html {
   /* Always show a scrollbar, to prevent jumping content */
@@ -493,18 +493,21 @@ input, button, select, textarea {
   }
 }
 
+.external-link-icon(@icon-path, @width) {
+  background: url("@{icon-path}") center right no-repeat;
+  padding-right: @width + 3px;
+}
+
 section#content {
   a.external,
   a.external[href ^="gopher://"] {
   	/* @embed */
-  	background: url("@{image-path}/external-link-ltr-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/external-link-ltr-icon.png", 10px);
   }
   a.external[href ^="https://"],
   .link-https {
   	/* @embed */
-  	background: url("@{image-path}/lock-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/lock-icon.png", 10px);
   }
   a.external[href ^="mailto:"],
   .link-mailto {
