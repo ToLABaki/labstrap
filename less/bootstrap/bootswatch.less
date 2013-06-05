@@ -1,6 +1,14 @@
+.navbar .nav li.dropdown.open > .dropdown-toggle {
+	.border-radius(5px);
+}
+
+/* Mediawiki styles */
+
 .toc {
-	background-color: @grayLighter;
-	border: 1px solid darken(@grayLighter, 15%);
+	.well;
+	margin: 0;
+	// background-color: @grayLighter;
+	// border: 1px solid darken(@grayLighter, 15%);
 
 	#toctitle h2 {
 		font-size: @baseFontSize;
@@ -8,7 +16,7 @@
 	}
 
 	> tbody > tr > td {
-		padding: 5px;
+		padding: 10px;
 		> ul {
 			list-style: none;
 		}
@@ -16,9 +24,11 @@
 }
 
 .mw-normal-catlinks {
-	padding: 5px;
-	background-color: @grayLighter;
-	border: 1px solid darken(@grayLighter, 15%);
+	.well;
+	.well-small;
+	// padding: 5px;
+	// background-color: @grayLighter;
+	// border: 1px solid darken(@grayLighter, 15%);
 	margin-top: 1em;
 }
 
@@ -30,11 +40,25 @@ input[type="submit"].hidden {
 	display: none;
 }
 
-.navbar .nav li.dropdown.open > .dropdown-toggle {
-	.border-radius(5px);
+#mw-revision-info {
+	font-size: @fontSizeLarge;
 }
 
 #wpSave,
 #wpLoginAttempt {
 	.btn-primary;
+}
+
+.warningbox {
+	.alert;
+}
+
+.successbox {
+	.alert;
+	.alert-success;
+}
+
+.errorbox {
+	.alert;
+	.alert-error;
 }

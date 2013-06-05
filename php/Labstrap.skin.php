@@ -283,7 +283,9 @@ if ($this->data['loggedin']) {
               <span dir="auto"><?php $this->html( 'title' ) ?></span>
             </h1>
             <!-- subtitle -->
-            <div id="contentSub" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+            <?php if ($this->data['subtitle']): ?>
+            <div id="contentSub" class="well" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+            <?php endif; ?>
             <!-- /subtitle -->
             <?php if ( $this->data['undelete'] ): ?>
             <!-- undelete -->
