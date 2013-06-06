@@ -58,3 +58,29 @@ body {
 .container-narrow {
 	max-width: 900px;
 }
+
+.navbar-inner-blank {
+	.input[type="search"] {
+		margin-right: 5px;
+	}
+}
+
+@media (max-width: 767px) {
+	.navigation {
+		// Stacked tabs and pills
+		> li {
+			float: none;
+		}
+		> li > a {
+		 	margin-right: 0; // no need for the gap between nav items
+		}
+
+		// Pills
+		> li > a {
+			margin-bottom: 3px;
+		}
+		> li:last-child > a {
+		  	margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
+		}
+	}
+}

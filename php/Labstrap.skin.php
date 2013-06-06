@@ -150,22 +150,24 @@ class LabstrapTemplate extends BaseTemplate {
 <header class="header">
   <div id="page-header" class="container-narrow  container noprint">
     <div class="row">
+      <!-- Search and personal menu -->
+      <div class="navbar pull-right pull-desktop">
+        <div class="navbar-inner navbar-inner-blank">
+          <?php
+          if ($wgSearchPlacement['header']) {
+            $this->renderNavigation( array( 'SEARCH' ) ); 
+          }
+
+          $this->renderNavigation( array( 'PERSONAL' ) ); 
+          ?>
+        </div>
+      </div>
       <!-- logo -->
-      <div class="pull-left">
+      <div class="pull-left pull-desktop">
         <?php
         if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
           $this->renderLogo();
         } ?>
-      </div>
-      <!-- Search and personal menu -->
-      <div class="navbar pull-right">
-        <?php
-        if ($wgSearchPlacement['header']) {
-          $this->renderNavigation( array( 'SEARCH' ) ); 
-        }
-
-        $this->renderNavigation( array( 'PERSONAL' ) ); 
-        ?>
       </div>
     </div>
 
@@ -243,39 +245,41 @@ if ($this->data['loggedin']) {
           # If there's no custom layout, then we automagically add one ?>
           <div id="innerbodycontent" class="nolayout"><div class="">
             <!-- page actions -->
-            <div class="navbar pull-right noprint">
-              <ul class="nav" role="navigation">
-              <?php
-                // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
-                //   $this->renderLogo();
-                // }
+            <div class="navbar pull-right pull-desktop noprint">
+              <div class="navbar-inner navbar-inner-blank">
+                <ul class="nav" role="navigation">
+                <?php
+                  // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
+                  //   $this->renderLogo();
+                  // }
 
-                # Page header & menu
-              $this->renderNavigation( array( 'PAGE' ) );
+                  # Page header & menu
+                $this->renderNavigation( array( 'PAGE' ) );
 
-                # This content in other languages
-              if ( $this->data['language_urls'] ) {
-                $this->renderNavigation( array( 'LANGUAGES' ) );
-              }
-                # Actions menu
-              $this->renderNavigation( array( 'ACTIONS' ) ); 
+                  # This content in other languages
+                if ( $this->data['language_urls'] ) {
+                  $this->renderNavigation( array( 'LANGUAGES' ) );
+                }
+                  # Actions menu
+                $this->renderNavigation( array( 'ACTIONS' ) ); 
 
-              if ( !isset( $portals['TOOLBOX'] ) ) {
-                $this->renderNavigation( array( 'TOOLBOX' ) ); 
-              }
-                # Sidebar items to display in navbar
-              // $this->renderNavigation( array( 'SIDEBARNAV' ) );
+                if ( !isset( $portals['TOOLBOX'] ) ) {
+                  $this->renderNavigation( array( 'TOOLBOX' ) ); 
+                }
+                  # Sidebar items to display in navbar
+                // $this->renderNavigation( array( 'SIDEBARNAV' ) );
 
 
-              ?>
-              </ul>
+                ?>
+                </ul>
 
-              <?php
+                <?php
 
-              # Edit button
-              $this->renderNavigation( array( 'EDIT' ) ); 
+                # Edit button
+                $this->renderNavigation( array( 'EDIT' ) ); 
 
-              ?>
+                ?>
+              </div>
             </div>
             <!-- page actions -->
 
@@ -438,7 +442,7 @@ if ($this->data['loggedin']) {
           $navTemp = $this->data['content_actions']['edit'];
 
           if ($navTemp) { ?>
-            <div class="actions pull-left nav">
+            <div class="actions pull-right nav">
                 <a id="b-edit" href="<?php echo $navTemp['href']; ?>" class="btn btn-primary"><i class="icon-edit icon-large"></i> <?php echo $navTemp['text']; ?></a>
             </div>
           <?php } 

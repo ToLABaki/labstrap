@@ -495,7 +495,7 @@ input, button, select, textarea {
 
 .external-link-icon(@icon-path, @width) {
   background: url("@{icon-path}") center right no-repeat;
-  padding-right: @width + 3px;
+  padding-right: (@width + 3);
 }
 
 section#content {
@@ -512,26 +512,22 @@ section#content {
   a.external[href ^="mailto:"],
   .link-mailto {
   	/* @embed */
-  	background: url("@{image-path}/mail-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/mail-icon.png", 10px);
   }
   a.external[href ^="news:"] {
   	/* @embed */
-  	background: url("@{image-path}/news-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/news-icon.png", 10px);
   }
   a.external[href ^="ftp://"],
   .link-ftp {
   	/* @embed */
-  	background: url("@{image-path}/file-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/file-icon.png", 10px);
   }
   a.external[href ^="irc://"],
   a.external[href ^="ircs://"],
   .link-irc {
   	/* @embed */
-  	background: url("@{image-path}/talk-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/talk-icon.png", 10px);
   }
   a.external[href $=".ogg"], a.external[href $=".OGG"],
   a.external[href $=".mid"], a.external[href $=".MID"],
@@ -541,15 +537,13 @@ section#content {
   a.external[href $=".wma"], a.external[href $=".WMA"],
   .link-audio {
   	/* @embed */
-  	background: url("@{image-path}/audio-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/audio-icon.png", 10px);
   }
   a.external[href $=".ogm"], a.external[href $=".OGM"],
   a.external[href $=".avi"], a.external[href $=".AVI"],
   a.external[href $=".mpeg"], a.external[href $=".MPEG"],
   .link-video {
   	/* @embed */
-  	background: url("@{image-path}/video-icon.png") center right no-repeat;
-  	padding-right: 13px;
+  	.external-link-icon("@{image-path}/video-icon.png", 10px);
   }
 }
