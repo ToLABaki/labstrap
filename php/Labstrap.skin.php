@@ -288,12 +288,12 @@ if ($this->data['loggedin']) {
             </h1>
             <!-- subtitle -->
             <?php if ($this->data['subtitle']): ?>
-            <div id="contentSub" class="well" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+            <div id="contentSub" class="well well-small" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
             <?php endif; ?>
             <!-- /subtitle -->
             <?php if ( $this->data['undelete'] ): ?>
             <!-- undelete -->
-            <div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+            <div id="contentSub2" class="well well-small"><?php $this->html( 'undelete' ) ?></div>
             <!-- /undelete -->
           <?php endif; ?>
           <?php $this->html( 'bodycontent' ); ?>
