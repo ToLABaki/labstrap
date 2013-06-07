@@ -493,41 +493,62 @@ input, button, select, textarea {
   }
 }
 
-.external-link-icon(@icon-path, @width) {
-  background: url("@{icon-path}") center right no-repeat;
-  padding-right: (@width + 3);
-}
+// .external-link-icon(@icon-path, @width) {
+//   background: url("@{icon-path}") center right no-repeat;
+//   padding-right: (@width + 3);
+// }
 
 section#content {
   a.external,
   a.external[href ^="gopher://"] {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/external-link-ltr-icon.png", 10px);
+    &:after {
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      text-decoration: inherit;
+      -webkit-font-smoothing: antialiased;
+      *margin-right: .3em; // fixes ie7 issues
+      vertical-align: super;
+      // .icon-external-link:before
+      content: " \f08e";
+    }
+  	// .external-link-icon("@{image-path}/external-link-ltr-icon.png", 10px);
   }
   a.external[href ^="https://"],
   .link-https {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/lock-icon.png", 10px);
+    &:after {
+      // .icon-lock:before 
+      content: " \f023";
+    }
+  	// .external-link-icon("@{image-path}/lock-icon.png", 10px);
   }
   a.external[href ^="mailto:"],
   .link-mailto {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/mail-icon.png", 10px);
+    &:after {
+      // .icon-envelope:before
+      content: " \f003";
+    }
+  	// .external-link-icon("@{image-path}/mail-icon.png", 10px);
   }
   a.external[href ^="news:"] {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/news-icon.png", 10px);
+  	// .external-link-icon("@{image-path}/news-icon.png", 10px);
   }
   a.external[href ^="ftp://"],
   .link-ftp {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/file-icon.png", 10px);
+  	&:after {
+      // .icon-file:before
+      content: " \f016";
+    }
+    // .external-link-icon("@{image-path}/file-icon.png", 10px);
   }
   a.external[href ^="irc://"],
   a.external[href ^="ircs://"],
   .link-irc {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/talk-icon.png", 10px);
+    &:after {
+      // .icon-comment-alt:before
+      content: " \f0e5";
+    }
+  	// .external-link-icon("@{image-path}/talk-icon.png", 10px);
   }
   a.external[href $=".ogg"], a.external[href $=".OGG"],
   a.external[href $=".mid"], a.external[href $=".MID"],
@@ -536,14 +557,20 @@ section#content {
   a.external[href $=".wav"], a.external[href $=".WAV"],
   a.external[href $=".wma"], a.external[href $=".WMA"],
   .link-audio {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/audio-icon.png", 10px);
+    &:after {
+      // .icon-music:before
+      content: " \f001";
+    }
+  	// .external-link-icon("@{image-path}/audio-icon.png", 10px);
   }
   a.external[href $=".ogm"], a.external[href $=".OGM"],
   a.external[href $=".avi"], a.external[href $=".AVI"],
   a.external[href $=".mpeg"], a.external[href $=".MPEG"],
   .link-video {
-  	/* @embed */
-  	.external-link-icon("@{image-path}/video-icon.png", 10px);
+    &:after {
+      // .icon-film:before 
+      content: " \f008";
+    }
+  	// .external-link-icon("@{image-path}/video-icon.png", 10px);
   }
 }
