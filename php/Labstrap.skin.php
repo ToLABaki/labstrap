@@ -225,7 +225,7 @@ if ($this->data['loggedin']) {
 
 <!-- innerbodycontent -->
         <?php # Peek into the body content, to see if a custom layout is used
-        if ($wgLabstrapSkinUseStandardLayout || preg_match("/class.*row/i", $this->data['bodycontent'])) { 
+        if ($wgLabstrapSkinUseStandardLayout || preg_match('/<div.*class="[^"]*labstrap_custom_layout[^"]*"/', $this->data['bodycontent'])) { 
           # If there's a custom layout, the H1 and layout is up to the page ?>
           <div id="innerbodycontent" class="layout">
             <h1 id="firstHeading" class="firstHeading page-header">

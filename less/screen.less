@@ -508,8 +508,7 @@ section#content {
       text-decoration: inherit;
       -webkit-font-smoothing: antialiased;
       *margin-right: .3em; // fixes ie7 issues
-      vertical-align: super;
-      // .icon-external-link:before
+      // font-awesome class: .icon-external-link:before
       content: " \f08e";
     }
   	// .external-link-icon("@{image-path}/external-link-ltr-icon.png", 10px);
@@ -517,7 +516,7 @@ section#content {
   a.external[href ^="https://"],
   .link-https {
     &:after {
-      // .icon-lock:before 
+      // font-awesome class: .icon-lock:before 
       content: " \f023";
     }
   	// .external-link-icon("@{image-path}/lock-icon.png", 10px);
@@ -525,7 +524,7 @@ section#content {
   a.external[href ^="mailto:"],
   .link-mailto {
     &:after {
-      // .icon-envelope:before
+      // font-awesome class: .icon-envelope:before
       content: " \f003";
     }
   	// .external-link-icon("@{image-path}/mail-icon.png", 10px);
@@ -536,7 +535,7 @@ section#content {
   a.external[href ^="ftp://"],
   .link-ftp {
   	&:after {
-      // .icon-file:before
+      // font-awesome class: .icon-file:before
       content: " \f016";
     }
     // .external-link-icon("@{image-path}/file-icon.png", 10px);
@@ -545,7 +544,7 @@ section#content {
   a.external[href ^="ircs://"],
   .link-irc {
     &:after {
-      // .icon-comment-alt:before
+      // font-awesome class: .icon-comment-alt:before
       content: " \f0e5";
     }
   	// .external-link-icon("@{image-path}/talk-icon.png", 10px);
@@ -558,7 +557,7 @@ section#content {
   a.external[href $=".wma"], a.external[href $=".WMA"],
   .link-audio {
     &:after {
-      // .icon-music:before
+      // font-awesome class: .icon-music:before
       content: " \f001";
     }
   	// .external-link-icon("@{image-path}/audio-icon.png", 10px);
@@ -568,9 +567,17 @@ section#content {
   a.external[href $=".mpeg"], a.external[href $=".MPEG"],
   .link-video {
     &:after {
-      // .icon-film:before 
+      // font-awesome class: .icon-film:before 
       content: " \f008";
     }
   	// .external-link-icon("@{image-path}/video-icon.png", 10px);
   }
+}
+
+/* Fixes conflicts in .label used inside of .wikiEditor-ui-toolbar */
+
+.wikiEditor-ui-toolbar .group .label {
+  background-color: transparent;
+  font-weight: normal;
+  text-shadow: none;
 }
