@@ -53,6 +53,7 @@ css: ${BUILD_PATH}/css/labstrap.css ${BOOTSTRAP_BUILD_PATH}/css/*.css
 ${BUILD_PATH}/css/labstrap.css: less/*.less
 	mkdir -p ${BUILD_PATH}/css
 	./${NODE_MODULE_BIN}/lessc less/labstrap.less > ${BUILD_PATH}/css/labstrap.css
+	./${NODE_MODULE_BIN}/lessc --yui-compress less/labstrap.less > ${BUILD_PATH}/css/labstrap.min.css
 
 # bootstrap css
 

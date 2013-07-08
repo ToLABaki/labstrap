@@ -23,9 +23,9 @@ $wgExtensionMessagesFiles['SkinLabstrap'] = dirname(__FILE__).'/Labstrap.i18n.ph
  
 $wgResourceModules['skins.labstrap'] = array(
         'styles' => array(
-                'labstrap/bootstrap/css/bootstrap.css' => array( 'media' => 'screen' ),
-                'labstrap/bootstrap/css/bootstrap-responsive.css' => array( 'media' => 'screen' ),
-                'labstrap/css/labstrap.css' => array( 'media' => 'screen' )
+                'labstrap/bootstrap/css/bootstrap.min.css' => array( 'media' => 'screen' ),
+                'labstrap/bootstrap/css/bootstrap-responsive.min.css' => array( 'media' => 'screen' ),
+                'labstrap/css/labstrap.min.css' => array( 'media' => 'screen' )
 	),
 	'scripts' => array(
 		'labstrap/bootstrap/js/bootstrap.js',
