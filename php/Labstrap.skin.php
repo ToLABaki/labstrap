@@ -212,6 +212,13 @@ if ($this->data['loggedin']) {
 }
 ?>
 
+<?php if ($wgGroupPermissions['*']['edit'] || $this->data['loggedin']) {
+  $userStateClass += " editable";
+} else {
+  $userStateClass += " not-editable";
+}
+?>
+
 <!-- page actions -->
 
 <!-- /page actions -->
