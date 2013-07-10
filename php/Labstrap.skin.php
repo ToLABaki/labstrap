@@ -409,8 +409,8 @@ if ($this->data['loggedin']) {
     }
     ?>
     <ul>
-      <li><a class="no-underline" href="#"><i class="icon-twitter icon-large"></i></a></li>
-      <li><a class="no-underline" href="#"><i class="icon-facebook icon-large"></i></a></li>
+      <li><a class="no-underline" href="https://twitter.com/tolabaki"><i class="icon-twitter icon-large"></i></a></li>
+      <li><a class="no-underline" href="https://www.facebook.com/ToLABaki"><i class="icon-facebook icon-large"></i></a></li>
     </ul>
     <?php $footericons = $this->getFooterIcons("icononly");
     if ( count( $footericons ) > 0 ): ?>
