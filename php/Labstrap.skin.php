@@ -167,39 +167,47 @@ class LabstrapTemplate extends BaseTemplate {
 
 <!-- Header -->
 <header class="header">
-  <div id="page-header" class="container-narrow  container noprint">
+  <div id="page-header" class="container noprint">
     <div class="row">
-      <!-- Search and personal menu -->
-      <div class="navbar pull-right pull-desktop">
-        <div class="navbar-inner navbar-inner-blank">
-          <?php
-          if ($wgSearchPlacement['header']) {
-            $this->renderNavigation( array( 'SEARCH' ) ); 
-          }
+      <div class="span12">
+        <div class="card card-light">
+        <!-- Search and personal menu -->
+        <div class="navbar pull-right pull-desktop">
+          <div class="navbar-inner navbar-inner-blank">
+            <?php
+            if ($wgSearchPlacement['header']) {
+              $this->renderNavigation( array( 'SEARCH' ) ); 
+            }
 
-          $this->renderNavigation( array( 'PERSONAL' ) ); 
-          ?>
+            $this->renderNavigation( array( 'PERSONAL' ) ); 
+            ?>
+          </div>
+        </div>
+        <!-- logo -->
+        <div class="logo">
+          <?php
+          if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
+            $this->renderLogo();
+          } ?>
         </div>
       </div>
-      <!-- logo -->
-      <div class="pull-left pull-desktop">
-        <?php
-        if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
-          $this->renderLogo();
-        } ?>
-      </div>
+    </div>
     </div>
 
     <div class="row labstrap-nav-row">
-      <ul class="navigation nav nav-pills searchform-disabled">
-        <?php
-        $this->renderNavigation( array( 'SIDEBAR' ) );
+      <div class="span12">
+        <div class="card card-dark">
+        <ul class="navigation nav nav-pills searchform-disabled">
+          <?php
+          $this->renderNavigation( array( 'SIDEBAR' ) );
           // Horizontal accordion search fo navbar
           // if ($wgSearchPlacement['nav']) {
           //   $this->renderNavigation( array( 'SEARCHNAV' ) );
           // }
-        ?>
-      </ul>
+          ?>
+        </ul>
+      </div>
+    </div>
     </div>
   </div>
 </header>
@@ -225,7 +233,7 @@ if ($this->data['loggedin']) {
 
 <!-- content -->
 <div class="main-section">
-<section id="content" class="mw-body container-narrow container <?php echo $userStateClass; ?>">
+<section id="content" class="mw-body container <?php echo $userStateClass; ?>">
   <div id="top"></div>
   <div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
   <?php if ( $this->data['sitenotice'] ): ?>
@@ -235,6 +243,8 @@ if ($this->data['loggedin']) {
 <?php endif; ?>
 <!-- bodyContent -->
 <div id="bodyContent" class="row">
+  <div class="span12">
+    <div class="card card-light">
   <?php if( $this->data['newtalk'] ): ?>
   <!-- newtalk -->
   <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
@@ -345,7 +355,7 @@ if ($this->data['loggedin']) {
   <!-- debughtml -->
   <?php $this->html( 'debughtml' ); ?>
   <!-- /debughtml -->
-</div>
+</div></div></div>
 <!-- /bodyContent -->
 </section>
 <!-- /content -->
@@ -354,8 +364,10 @@ if ($this->data['loggedin']) {
 
 <!-- footer -->
 <footer id="footer" class="footer "<?php $this->html( 'userlangattributes' ) ?>>
-  <div class="container-narrow container">
+  <div class="container">
     <div class="row">
+      <div class="span12">
+        <div class="card card-dark">
       <?php
       $footerLinks = $this->getFooterLinks();
 
@@ -396,6 +408,10 @@ if ($this->data['loggedin']) {
       endforeach; 
     }
     ?>
+    <ul>
+      <li><a class="no-underline" href="#"><i class="icon-twitter icon-large"></i></a></li>
+      <li><a class="no-underline" href="#"><i class="icon-facebook icon-large"></i></a></li>
+    </ul>
     <?php $footericons = $this->getFooterIcons("icononly");
     if ( count( $footericons ) > 0 ): ?>
     <ul id="footer-icons" class="noprint">
@@ -412,6 +428,9 @@ if ($this->data['loggedin']) {
 </div>
 </div>
 </div>
+<div class="row"></div>
+</div>
+</footer>
 <!-- /footer -->
 
     <?php $this->printTrail(); ?>
@@ -429,7 +448,8 @@ if ($this->data['loggedin']) {
         $mainPageLink = $this->data['nav_urls']['mainpage']['href'];
         $toolTip = Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) );
 ?>
-                  <ul class="nav" role="navigation"><li id="p-logo"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>><img src="<?php $this->text( 'logopath' ); ?>" alt="<?php $this->html('sitename'); ?>"></a><li></ul>
+                  <!-- <ul class="nav" role="navigation"><li id="p-logo"><a href="<?php /*echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )*/ ?>" <?php /*echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )*/ ?>><img src="<?php /*$this->text( 'logopath' );*/ ?>" alt="<?php /*$this->html('sitename');*/ ?>"></a><li></ul> -->
+  <a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>><img src="<?php $this->text( 'logopath' ); ?>" alt="<?php $this->html('sitename'); ?>"></a>
 <?php
   }
 

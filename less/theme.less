@@ -1,13 +1,11 @@
 /* Add your custom theme overrides here */
 
 body {
-	background-color: #fff;
-	/*background-color: #000;*/
-
+	background-color: @white;
 }
 
 .footer {
-	padding-bottom: 10px;
+	// padding-bottom: 10px;
 	// background-color: #ddd;
 	// background-color: #fff;
 	
@@ -18,16 +16,16 @@ body {
 	/* Dark themes */
 
 	// border-top: 1px solid #222;
-	.container-narrow .row {
-		border-top: 1px solid #eee;
-	}
+	// .container-narrow .row {
+	// 	border-top: 1px solid #eee;
+	// }
 }
 
 .header {
 	/* Light themes */
 	
 	// background-color: #ddd;
-	border-bottom: 1px solid #eee;
+	// border-bottom: 1px solid #eee;
 	
 	/* Dark themes */
 	
@@ -36,11 +34,11 @@ body {
 }
 
 .main-section {
-	padding-bottom: 30px;
+	// padding-bottom: 30px;
 	
 	/* Light themes */
 	
-	background-color: white;
+	// background-color: white;
 	
 	/* Dark themes */
 
@@ -52,15 +50,61 @@ body {
 }
 
 .labstrap-nav-row {
-	margin-top: 10px !important;
+	margin-top: 30px !important;
 }
 
-.container-narrow {
-	max-width: 900px;
+.navigation {
+	a {
+		color: @white;
+	}
+
+	.dropdown .caret {
+			border-top-color: @white;
+			border-bottom-color: @white;
+	}
+
+	>li>a:hover, >li>a:focus {
+		background-color: @gray;
+
+		.caret {
+			border-top-color: @white;
+			border-bottom-color: @white;
+		}
+	}
 }
 
 .navbar-inner-blank input[type="search"] {
 		margin-right: 5px;
+}
+
+.card {
+	padding: 20px;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+}
+
+.card ul {
+	margin-bottom: 0;
+}
+
+.card-light {
+	background-color: @lightbg;
+	border: 1px solid @border;
+}
+
+.card-dark {
+	background-color: @darkbg;
+	border: 1px solid @darkbg;
+}
+
+/* Icon links */
+
+.no-underline {
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 @media (max-width: 767px) {
@@ -80,5 +124,9 @@ body {
 		> li:last-child > a {
 		  	margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
 		}
+	}
+
+	.logo {
+		text-align: center;
 	}
 }
