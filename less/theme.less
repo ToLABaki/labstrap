@@ -107,6 +107,13 @@ body {
 	}
 }
 
+p.no-underline a {
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 @media (max-width: 767px) {
 	.navigation {
 		// Stacked tabs and pills
