@@ -369,8 +369,36 @@ if ($this->data['loggedin']) {
       <div class="span12">
         <div class="card card-dark">
       <?php
-      $footerLinks = $this->getFooterLinks();
+      /* Make footer static for now, maybe add/remove links via mediawiki later? */
+      /* http://www.mediawiki.org/wiki/Manual:Footer */
+      $footerLinks = /*$this->getFooterLinks()*/NULL;
+      ?>
 
+      <ul id="footer-places">
+        <?php
+          if (!$this->data['loggedin']) {
+            $personalTemp = $this->getPersonalTools();
+
+          if (isset($personalTemp['login'])) {
+            $loginType = 'login';
+          } else {
+            $loginType = 'anonlogin';
+          }
+
+          ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><?php echo $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
+        }?>
+        <li><a href="/w/To_Labaki:About" title="To Labaki:About">Σχετικά</a></li>
+        <li><a href="/w/Contact" title="Contact">Επικοινωνία</a></li>
+        <li><a class="no-underline" href="https://twitter.com/tolabaki"><i class="icon-twitter icon-large"></i></a></li>
+        <li><a class="no-underline" href="https://www.facebook.com/ToLABaki"><i class="icon-facebook icon-large"></i></a></li>
+      </ul>
+
+      <ul>
+        <li>Content licenced under <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></li>      
+        <li>Powered by <a href="https://www.mediawiki.org/wiki/MediaWiki">Mediawiki</a></li>    
+      </ul>
+
+      <?php
       if (is_array($footerLinks)) {
         foreach($footerLinks as $category => $links ):
           if ($category === 'info') { continue; } ?>
@@ -408,23 +436,20 @@ if ($this->data['loggedin']) {
       endforeach; 
     }
     ?>
-    <ul>
-      <li><a class="no-underline" href="https://twitter.com/tolabaki"><i class="icon-twitter icon-large"></i></a></li>
-      <li><a class="no-underline" href="https://www.facebook.com/ToLABaki"><i class="icon-facebook icon-large"></i></a></li>
-    </ul>
-    <?php $footericons = $this->getFooterIcons("icononly");
-    if ( count( $footericons ) > 0 ): ?>
-    <ul id="footer-icons" class="noprint">
-      <?php      foreach ( $footericons as $blockName => $footerIcons ): ?>
-      <li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
-        <?php        foreach ( $footerIcons as $icon ): ?>
-        <?php echo $this->getSkin()->makeFooterIcon( $icon ); ?>
 
-      <?php        endforeach; ?>
-    </li>
-  <?php      endforeach; ?>
-</ul>
-<?php endif; ?>
+    <?php /*$footericons = $this->getFooterIcons("icononly");
+    if ( count( $footericons ) > 0 ):*/ ?>
+    <!-- <ul id="footer-icons" class="noprint"> -->
+      <?php      /*foreach ( $footericons as $blockName => $footerIcons ):*/ ?>
+      <!-- <li id="footer-<?php /*echo htmlspecialchars( $blockName );*/ ?>ico"> -->
+        <?php        /*foreach ( $footerIcons as $icon ):*/ ?>
+        <?php /*echo $this->getSkin()->makeFooterIcon( $icon );*/ ?>
+
+      <?php      /*  endforeach;*/ ?>
+    <!-- </li> -->
+  <?php      /*endforeach;*/ ?>
+<!-- </ul> -->
+<?php /*endif;*/ ?>
 </div>
 </div>
 </div>
