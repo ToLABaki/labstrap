@@ -54,22 +54,26 @@ body {
 }
 
 .navigation {
-	a {
-		color: @white;
-	}
 
 	.dropdown .caret {
 			border-top-color: @white;
 			border-bottom-color: @white;
 	}
 
-	>li>a:hover, >li>a:focus {
-		background-color: @gray;
+	>li>a {
+		color: @white;
+	
+		&:hover,
+		&:focus {
+			background-color: @gray;
+			color: @white;
 
-		.caret {
-			border-top-color: @white;
-			border-bottom-color: @white;
+			.caret {
+				border-top-color: @white;
+				border-bottom-color: @white;
+			}
 		}
+
 	}
 }
 
@@ -96,6 +100,15 @@ body {
 .card-dark {
 	background-color: @darkbg;
 	border: 1px solid @darkbg;
+	color: lighten(@text, 30%);
+	a {
+		color: lighten(@linkColor, 20%);
+
+		&:focus,
+		&:hover {
+			color: lighten(@linkColor, 30%);
+		}
+	}
 }
 
 /* Icon links */
