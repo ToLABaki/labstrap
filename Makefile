@@ -18,7 +18,7 @@ build: css js php misc
 
 misc: ${MISC}
 
-${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/font/*
+${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/font/* font/*
 # doc
 	cp README.md ${BUILD_PATH}
 	cp README.strapping.md ${BUILD_PATH}
@@ -31,6 +31,9 @@ ${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/font/*
 # font-awesome
 	mkdir -p ${BOOTSTRAP_BUILD_PATH}/awesome
 	cp -r font-awesome/font ${BOOTSTRAP_BUILD_PATH}/awesome
+
+# fonts
+	cp -r font ${BUILD_PATH}
 
 #
 # Move php files to build
