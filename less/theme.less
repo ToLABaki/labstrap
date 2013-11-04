@@ -1,152 +1,122 @@
 /* Add your custom theme overrides here */
 
 body {
-	background-color: @white;
+	background-color: #fff;
 }
 
-.footer {
-	// padding-bottom: 10px;
-	// background-color: #ddd;
-	// background-color: #fff;
-	
-	/* Light themes */
-	
-	// border-top: 1px solid #ccc;
-
-	/* Dark themes */
-
-	// border-top: 1px solid #222;
-	// .container-narrow .row {
-	// 	border-top: 1px solid #eee;
-	// }
-}
-
-.header {
-	/* Light themes */
-	
-	// background-color: #ddd;
-	// border-bottom: 1px solid #eee;
-	
-	/* Dark themes */
-	
-	// background-color: #000;
-	// border-bottom: 1px solid #222;
-}
-
-.main-section {
-	// padding-bottom: 30px;
-	
-	/* Light themes */
-	
-	// background-color: white;
-	
-	/* Dark themes */
-
-	// background-color: #121417
+.row {
+    margin-top: 30px;
 }
 
 #p-logo a:hover {
 	background-color: transparent;
 }
 
-.labstrap-nav-row {
-	margin-top: 30px !important;
-}
-
-.navigation {
+.nav-pills.nav-pills-inverse {
 
 	.dropdown .caret {
-			border-top-color: @white;
-			border-bottom-color: @white;
+			border-top-color: #fff;
+			border-bottom-color: #fff;
 	}
 
-	>li>a {
-		color: @white;
-	
-		&:hover,
-		&:focus {
-			background-color: @gray;
-			color: @white;
+	>li {
+		>a {
+			color: #fff;
+		
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: @gray;
+				color: #fff;
 
-			.caret {
-				border-top-color: @white;
-				border-bottom-color: @white;
+				.caret {
+					border-top-color: #fff;
+					border-bottom-color: #fff;
+				}
 			}
 		}
 
+		&.open>a,
+		&.open>a:hover,
+		&.open>a:focus,
+		&.open>a:active {
+			color: @link-color;
+			background-color: transparent;
+
+			.caret {
+				border-top-color: @link-color;
+				border-bottom-color: @link-color;
+			}
+		}
 	}
 }
 
-.navbar-inner-blank input[type="search"] {
-		margin-right: 5px;
+.navbar-transparent .nav {
+	
+	>li>a {
+		color: @text-color;
+		text-decoration: none;
+		text-shadow: 0 1px 0 #fff;
+
+		.caret {
+			border-top-color: @text-color;
+			border-bottom-color: @text-color;
+		}
+
+		&:focus,
+		&:active,
+		&:hover {
+			color: darken(@text-color, 15%);
+			background-color: transparent;
+
+			.caret {
+				border-top-color: darken(@text-color, 15%);
+				border-bottom-color: darken(@text-color, 15%);
+			}
+		}
+	}
+
+	.open>a,
+	.open>a:hover,
+	.open>a:focus,
+	.open>a:active {
+		color: @link-color;
+		background-color: transparent;
+
+		.caret {
+			border-top-color: @link-color;
+			border-bottom-color: @link-color;
+		}
+	}
 }
 
-.card {
+.labstrap-card {
 	padding: 20px;
-	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-	        border-radius: 5px;
+	border-radius: 5px;
+	.nav {
+		margin-bottom: 0;
+	}
 }
 
-.card ul {
-	margin-bottom: 0;
+.labstrap-card-light {
+	background-color: @lightbg-color;
+	border: 1px solid @border-color;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #58595b;
+	}
 }
 
-.card-light {
-	background-color: @lightbg;
-	border: 1px solid @border;
-}
-
-.card-dark {
-	background-color: @darkbg;
-	border: 1px solid @darkbg;
-	color: lighten(@text, 30%);
+.labstrap-card-dark {
+	background-color: @darkbg-color;
+	border: 1px solid @darkbg-color;
+	color: lighten(@text-color, 30%);
 	a {
-		color: lighten(@linkColor, 20%);
+		color: lighten(@link-color, 20%);
 
 		&:focus,
 		&:hover {
-			color: lighten(@linkColor, 30%);
+			color: lighten(@link-color, 30%);
 		}
-	}
-}
-
-/* Icon links */
-
-.no-underline {
-	&:focus,
-	&:hover {
-		text-decoration: none;
-	}
-}
-
-p.no-underline a {
-	&:focus,
-	&:hover {
-		text-decoration: none;
-	}
-}
-
-@media (max-width: 767px) {
-	.navigation {
-		// Stacked tabs and pills
-		> li {
-			float: none;
-		}
-		> li > a {
-		 	margin-right: 0; // no need for the gap between nav items
-		}
-
-		// Pills
-		> li > a {
-			margin-bottom: 3px;
-		}
-		> li:last-child > a {
-		  	margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
-		}
-	}
-
-	.logo {
-		text-align: center;
 	}
 }

@@ -6,7 +6,7 @@ MISC = \
 	${BUILD_PATH}/LICENSE \
 	${BOOTSTRAP_BUILD_PATH}/LICENSE \
 	${BUILD_PATH}/images/* \
-	${BOOTSTRAP_BUILD_PATH}/awesome/font/*
+	${BOOTSTRAP_BUILD_PATH}/fonts/*
 
 .PHONY: build watch misc php css js clean
 
@@ -18,7 +18,7 @@ build: css js php misc
 
 misc: ${MISC}
 
-${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/font/* font/*
+${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/fonts/* font/*
 # doc
 	cp README.md ${BUILD_PATH}
 	cp README.strapping.md ${BUILD_PATH}
@@ -29,8 +29,8 @@ ${MISC}: *.md LICENSE bootstrap/LICENSE images/* font-awesome/font/* font/*
 	cp -r images ${BUILD_PATH}
 
 # font-awesome
-	mkdir -p ${BOOTSTRAP_BUILD_PATH}/awesome
-	cp -r font-awesome/font ${BOOTSTRAP_BUILD_PATH}/awesome
+	mkdir -p ${BOOTSTRAP_BUILD_PATH}/fonts
+	cp font-awesome/fonts/* ${BOOTSTRAP_BUILD_PATH}/fonts
 
 # fonts
 	cp -r font ${BUILD_PATH}
@@ -55,17 +55,20 @@ css: ${BUILD_PATH}/css/labstrap.css ${BOOTSTRAP_BUILD_PATH}/css/*.css
 
 ${BUILD_PATH}/css/labstrap.css: less/*.less
 	mkdir -p ${BUILD_PATH}/css
+	# FIXME: put this elsewhere
+	cp font-awesome/css/font-awesome.min.css ${BUILD_PATH}/css/
+	cp -r font-awesome/fonts ${BUILD_PATH}/fonts
+	###########################
 	./${NODE_MODULE_BIN}/lessc less/labstrap.less > ${BUILD_PATH}/css/labstrap.css
 	./${NODE_MODULE_BIN}/lessc --yui-compress less/labstrap.less > ${BUILD_PATH}/css/labstrap.min.css
 
 # bootstrap css
 
-${BOOTSTRAP_BUILD_PATH}/css/*.css: less/bootstrap/*.less
+${BOOTSTRAP_BUILD_PATH}/css/*.css: less/bootstrap/*.less less/mediawiki-bootstrap-mixins.less
 	mkdir -p ${BOOTSTRAP_BUILD_PATH}/css
+	# cp bootstrap/dist/css/* ${BOOTSTRAP_BUILD_PATH}/css
 	./${NODE_MODULE_BIN}/lessc less/bootstrap/swatch.less > ${BOOTSTRAP_BUILD_PATH}/css/bootstrap.css
 	./${NODE_MODULE_BIN}/lessc --yui-compress less/bootstrap/swatch.less > ${BOOTSTRAP_BUILD_PATH}/css/bootstrap.min.css
-	./${NODE_MODULE_BIN}/lessc less/bootstrap/swatch-responsive.less > ${BOOTSTRAP_BUILD_PATH}/css/bootstrap-responsive.css
-	./${NODE_MODULE_BIN}/lessc --yui-compress less/bootstrap/swatch-responsive.less > ${BOOTSTRAP_BUILD_PATH}/css/bootstrap-responsive.min.css
 
 #
 # js
@@ -84,11 +87,12 @@ ${BUILD_PATH}/js/*.js: js/*.js js/*.htc
 
 ${BOOTSTRAP_BUILD_PATH}/js/*.js: bootstrap/js/*.js
 	mkdir -p ${BOOTSTRAP_BUILD_PATH}/js
-	cat bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js bootstrap/js/bootstrap-affix.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.js
-	./${NODE_MODULE_BIN}/uglifyjs -nc ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js
-	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > ${BOOTSTRAP_BUILD_PATH}/js/copyright.js
-	cat ${BOOTSTRAP_BUILD_PATH}/js/copyright.js ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.js
-	rm ${BOOTSTRAP_BUILD_PATH}/js/copyright.js ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js
+	cp bootstrap/dist/js/bootstrap.min.js ${BOOTSTRAP_BUILD_PATH}/js
+	# cat bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js bootstrap/js/bootstrap-affix.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.js
+	# ./${NODE_MODULE_BIN}/uglifyjs -nc ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js
+	# echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > ${BOOTSTRAP_BUILD_PATH}/js/copyright.js
+	# cat ${BOOTSTRAP_BUILD_PATH}/js/copyright.js ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js > ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.js
+	# rm ${BOOTSTRAP_BUILD_PATH}/js/copyright.js ${BOOTSTRAP_BUILD_PATH}/js/bootstrap.min.tmp.js
 
 # watch labstrap less files
 

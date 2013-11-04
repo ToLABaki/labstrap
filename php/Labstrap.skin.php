@@ -169,19 +169,16 @@ class LabstrapTemplate extends BaseTemplate {
 <header class="header">
   <div id="page-header" class="container noprint">
     <div class="row">
-      <div class="span12">
-        <div class="card card-light">
+      <div class="labstrap-card labstrap-card-light">
         <!-- Search and personal menu -->
-        <div class="navbar pull-right pull-desktop">
-          <div class="navbar-inner navbar-inner-blank">
+        <div class="navbar navbar-transparent navbar-right pull-desktop">
             <?php
-            if ($wgSearchPlacement['header']) {
-              $this->renderNavigation( array( 'SEARCH' ) ); 
-            }
+              if ($wgSearchPlacement['header']) {
+                $this->renderNavigation( array( 'SEARCH' ) ); 
+              }
 
-            $this->renderNavigation( array( 'PERSONAL' ) ); 
+              $this->renderNavigation( array( 'PERSONAL' ) ); 
             ?>
-          </div>
         </div>
         <!-- logo -->
         <div class="logo">
@@ -192,12 +189,10 @@ class LabstrapTemplate extends BaseTemplate {
         </div>
       </div>
     </div>
-    </div>
 
-    <div class="row labstrap-nav-row">
-      <div class="span12">
-        <div class="card card-dark">
-        <ul class="navigation nav nav-pills searchform-disabled">
+    <div class="row">
+      <nav class="labstrap-card labstrap-card-dark">
+        <ul class="nav nav-pills nav-pills-inverse searchform-disabled">
           <?php
           $this->renderNavigation( array( 'SIDEBAR' ) );
           // Horizontal accordion search fo navbar
@@ -206,8 +201,7 @@ class LabstrapTemplate extends BaseTemplate {
           // }
           ?>
         </ul>
-      </div>
-    </div>
+      </nav>
     </div>
   </div>
 </header>
@@ -227,10 +221,6 @@ if ($this->data['loggedin']) {
 }
 ?>
 
-<!-- page actions -->
-
-<!-- /page actions -->
-
 <!-- content -->
 <div class="main-section">
 <section id="content" class="mw-body container <?php echo $userStateClass; ?>">
@@ -243,8 +233,7 @@ if ($this->data['loggedin']) {
 <?php endif; ?>
 <!-- bodyContent -->
 <div id="bodyContent" class="row">
-  <div class="span12">
-    <div class="card card-light">
+    <div class="labstrap-card labstrap-card-light">
   <?php if( $this->data['newtalk'] ): ?>
   <!-- newtalk -->
   <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
@@ -278,41 +267,38 @@ if ($this->data['loggedin']) {
           # If there's no custom layout, then we automagically add one ?>
           <div id="innerbodycontent" class="nolayout"><div class="">
             <!-- page actions -->
-            <div class="navbar pull-right pull-desktop noprint">
-              <div class="navbar-inner navbar-inner-blank">
-                <ul class="nav" role="navigation">
+            <div class="navbar navbar-transparent navbar-right pull-desktop noprint">
+              <ul class="nav navbar-nav navbar-right" role="navigation">
                 <?php
                   // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
                   //   $this->renderLogo();
                   // }
 
                   # Page header & menu
-                $this->renderNavigation( array( 'PAGE' ) );
+                  $this->renderNavigation( array( 'PAGE' ) );
 
                   # This content in other languages
-                if ( $this->data['language_urls'] ) {
-                  $this->renderNavigation( array( 'LANGUAGES' ) );
-                }
+                  if ( $this->data['language_urls'] ) {
+                    $this->renderNavigation( array( 'LANGUAGES' ) );
+                  }
                   # Actions menu
-                $this->renderNavigation( array( 'ACTIONS' ) ); 
+                  $this->renderNavigation( array( 'ACTIONS' ) ); 
 
-                if ( !isset( $portals['TOOLBOX'] ) ) {
-                  $this->renderNavigation( array( 'TOOLBOX' ) ); 
-                }
+                  if ( !isset( $portals['TOOLBOX'] ) ) {
+                    $this->renderNavigation( array( 'TOOLBOX' ) ); 
+                  }
                   # Sidebar items to display in navbar
-                // $this->renderNavigation( array( 'SIDEBARNAV' ) );
-
-
+                  // $this->renderNavigation( array( 'SIDEBARNAV' ) );
                 ?>
-                </ul>
-
+                
+                <li>
                 <?php
-
-                # Edit button
-                $this->renderNavigation( array( 'EDIT' ) ); 
-
+                  # Edit button
+                  $this->renderNavigation( array( 'EDIT' ) ); 
                 ?>
-              </div>
+                </li>
+
+              </ul>
             </div>
             <!-- page actions -->
 
@@ -355,7 +341,7 @@ if ($this->data['loggedin']) {
   <!-- debughtml -->
   <?php $this->html( 'debughtml' ); ?>
   <!-- /debughtml -->
-</div></div></div>
+</div></div>
 <!-- /bodyContent -->
 </section>
 <!-- /content -->
@@ -366,8 +352,7 @@ if ($this->data['loggedin']) {
 <footer id="footer" class="footer "<?php $this->html( 'userlangattributes' ) ?>>
   <div class="container">
     <div class="row">
-      <div class="span12">
-        <div class="card card-dark">
+      <div class="labstrap-card labstrap-card-dark">
       <?php
       /* Make footer static for now, maybe add/remove links via mediawiki later? */
       /* http://www.mediawiki.org/wiki/Manual:Footer */
@@ -389,8 +374,8 @@ if ($this->data['loggedin']) {
         }?>
         <li><a href="/w/To_Labaki:About" title="To Labaki:About">Σχετικά</a></li>
         <li><a href="/w/Contact" title="Contact">Επικοινωνία</a></li>
-        <li><a class="no-underline" href="https://twitter.com/tolabaki"><i class="icon-twitter icon-large"></i></a></li>
-        <li><a class="no-underline" href="https://www.facebook.com/ToLABaki"><i class="icon-facebook icon-large"></i></a></li>
+        <li><a href="https://twitter.com/tolabaki"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+        <li><a href="https://www.facebook.com/ToLABaki"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
       </ul>
 
       <ul>
@@ -452,7 +437,6 @@ if ($this->data['loggedin']) {
 <?php /*endif;*/ ?>
 </div>
 </div>
-</div>
 <div class="row"></div>
 </div>
 </footer>
@@ -510,8 +494,11 @@ if ($this->data['loggedin']) {
           $navTemp = $this->data['content_actions']['edit'];
 
           if ($navTemp) { ?>
-            <div class="actions pull-right nav">
-                <a id="b-edit" href="<?php echo $navTemp['href']; ?>" class="btn btn-primary"><i class="icon-edit icon-large"></i> <?php echo $navTemp['text']; ?></a>
+            <div id="b-edit" class="navbar-btn">
+              <a href="<?php echo $navTemp['href']; ?>" class="btn btn-primary">
+                <i class="fa fa-edit fa-lg"></i>
+                <?php echo $navTemp['text']; ?>
+              </a>
             </div>
           <?php } 
         break;
@@ -527,7 +514,7 @@ if ($this->data['loggedin']) {
               foreach ( $theData as $link ) {
                   if ( array_key_exists( 'context', $link ) && $link['context'] == 'subject' ) {
               ?>
-              <a data-toggle="dropdown" class="dropdown-toggle" role="menu"><?php echo htmlspecialchars( $link['text'] ); ?> <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="menu" href="#"><?php echo htmlspecialchars( $link['text'] ); ?> <b class="caret"></b></a>
                   <?php } ?>
               <?php } ?>
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
@@ -555,7 +542,7 @@ if ($this->data['loggedin']) {
 
             <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
 
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
 
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
 
@@ -585,7 +572,7 @@ if ($this->data['loggedin']) {
           <?php if (count($theData) > 0) { ?>
             <ul class="nav" role="navigation">
               <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
-                <a data-toggle="dropdown" class="dropdown-toggle" role="button"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
                 <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
                   <?php foreach ( $theData as $link ): ?>
                     <li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?> tabindex="-1"><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
@@ -604,7 +591,7 @@ if ($this->data['loggedin']) {
           <?php if (count($theData) > 0) { ?>
             <ul class="nav" role="navigation">
               <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
-                <a data-toggle="dropdown" class="dropdown-toggle" role="button"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><?php $this->msg($theMsg) ?> <b class="caret"></b></a>
                 <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
                   <?php foreach ( $theData as $link ): ?>
                     <li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?> tabindex="-1"><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
@@ -624,7 +611,7 @@ if ($this->data['loggedin']) {
           if (count($theData) > 0) {
             ?><!-- <ul class="nav" role="navigation"> -->
               <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
-                <a data-toggle="dropdown" class="dropdown-toggle" role="button"><?php echo $this->msg( 'actions' ); ?> <b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><?php echo $this->msg( 'actions' ); ?> <b class="caret"></b></a>
                 <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
                   <?php foreach ( $theData as $link ):
 
@@ -648,7 +635,7 @@ if ($this->data['loggedin']) {
           $theMsg = 'personaltools';
           $theData = $this->getPersonalTools();
           $theTitle = $this->data['username'];
-          $showPersonal = false;
+
           foreach ( $theData as $key => $item ) {
             if ( !preg_match('/(notifications|login|createaccount)/', $key) ) {
               $showPersonal = true;
@@ -656,7 +643,7 @@ if ($this->data['loggedin']) {
           }
 
           ?>
-          <ul class="nav pull-right" role="navigation">
+          <ul class="nav navbar-nav navbar-right" role="navigation">
             <li class="dropdown" id="p-notifications" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
             <?php if ( array_key_exists('notifications', $theData) ) {
               echo $this->makeListItem( 'notifications', $theData['notifications'] );
@@ -674,12 +661,9 @@ if ($this->data['loggedin']) {
             } ?>
             </li>
             <?php endif; ?>
-            <?php
-            if ( $showPersonal ):
-            ?>
             <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( !$showPersonal ) echo ' emptyPortlet'; ?>">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button">
-                <i class="icon-user icon-large"></i>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">
+                <i class="fa fa-user fa-lg"></i>
                 <?php echo $theTitle; ?> <b class="caret"></b></a>
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
               <?php foreach( $theData as $key => $item ) {
@@ -696,7 +680,6 @@ if ($this->data['loggedin']) {
               } ?>
               </ul>
             </li>
-            <?php endif; ?>
           </ul>
           <?php
         break;
@@ -704,8 +687,10 @@ if ($this->data['loggedin']) {
 
         case 'SEARCH':
           ?>
-            <form class="navbar-search" action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-              <input id="searchInput" class="search-query" type="search" accesskey="f" title="<?php $this->text('searchtitle'); ?>" placeholder="<?php $this->msg('search'); ?>" name="search" value="<?php echo htmlspecialchars ($this->data['search']); ?>">
+            <form class="navbar-form navbar-left" action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+              <div class="form-group">
+                <input id="searchInput" class="search-query form-control" type="search" accesskey="f" title="<?php $this->text('searchtitle'); ?>" placeholder="<?php $this->msg('search'); ?>" name="search" value="<?php echo htmlspecialchars ($this->data['search']); ?>">
+              </div>
               <?php echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn hidden' ) ); ?>
             </form>
 
@@ -750,7 +735,7 @@ if ($this->data['loggedin']) {
             $name = htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $name ); ?>
           <!-- <ul class="nav" role="navigation"> -->
           <li class="dropdown" id="p-<?php echo $name; ?>" class="vectorMenu">
-          <a data-toggle="dropdown" class="dropdown-toggle" role="menu"><?php echo htmlspecialchars( $name ); ?> <b class="caret"></b></a>
+          <a data-toggle="dropdown" class="dropdown-toggle" role="menu" href="#"><?php echo htmlspecialchars( $name ); ?> <b class="caret"></b></a>
           <ul aria-labelledby="<?php echo htmlspecialchars( $name ); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>><?php
             # This is a rather hacky way to name the nav.
             # (There are probably bugs here...) 
@@ -785,7 +770,7 @@ if ($this->data['loggedin']) {
             $name = htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $name );
             if ( $displayCategoryAsDropdown /*$wgLabstrapSkinDisplaySidebarNavigation*/ ) { ?>
               <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" role="button"><?php echo htmlspecialchars( $name ); ?><b class="caret"></b></a>
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><?php echo htmlspecialchars( $name ); ?><b class="caret"></b></a>
                 <ul aria-labelledby="<?php echo htmlspecialchars( $name ); ?>" role="menu" class="dropdown-menu"><?php
             }
             # This is a rather hacky way to name the nav.
@@ -808,7 +793,7 @@ if ($this->data['loggedin']) {
           $theData = $this->data['language_urls']; ?>
           <!-- <ul class="nav" role="navigation"> -->
             <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
-              <a data-toggle="dropdown" class="dropdown-toggle brand" role="menu"><?php echo $this->html($theMsg) ?> <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle brand" role="menu" href="#"><?php echo $this->html($theMsg) ?> <b class="caret"></b></a>
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
 
               <?php foreach( $content as $key => $val ) { ?>

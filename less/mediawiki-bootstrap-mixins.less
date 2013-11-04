@@ -1,0 +1,115 @@
+// Mediawiki classes mixed in with bootstrap classes, bootstrap.less needs to be included
+
+.toc {
+    .well;
+    margin: 0;
+
+    #toctitle h2 {
+        font-size: @font-size-base;
+        line-height: @line-height-base;
+    }
+
+    > tbody > tr > td {
+        padding: 10px;
+        > ul {
+            list-style: none;
+        }
+    }
+}
+
+.mw-normal-catlinks {
+    .well;
+    .well-sm;
+
+    margin-top: 1em;
+}
+
+.thumb {
+    .img-thumbnail;
+    margin: 5px;
+    background-color: #fff;
+}
+
+input[type="submit"] {
+    .btn;
+    .btn-default;
+}
+
+#mw-search-top-table input[type="submit"],
+input[type="submit"].mw-htmlform-submit {
+    .btn;
+    .btn-primary;
+}
+
+// input[type="submit"].hidden {
+//  display: none;
+// }
+
+input:not([type]),
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    .form-control;
+    width: initial;
+    display: inline-block;
+    // Customize the `:focus` state to imitate native WebKit styles.
+    .form-control-focus();
+
+    // Disabled and read-only inputs
+    // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+    // be disabled if the fieldset is disabled. Due to implementation difficulty,
+    // we don't honor that edge case; we style them as disabled anyway.
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        background-color: @input-bg-disabled;
+    }
+
+}
+
+// Reset height for `textarea`s
+textarea {
+    height: auto;
+}
+
+#mw-revision-info {
+    font-size: @font-size-large;
+}
+
+#wpSave,
+#wpLoginAttempt {
+    .btn;
+    .btn-primary;
+}
+
+.warningbox {
+    .alert;
+}
+
+.successbox {
+    .alert;
+    .alert-success;
+}
+
+.errorbox {
+    .alert;
+    .alert-danger;
+}
+
+#preferences {
+    background-color: #fff;
+}
