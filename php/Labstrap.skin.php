@@ -256,7 +256,7 @@ if ($this->data['loggedin']) {
             <div class="navbar navbar-md-transparent navbar-default navbar-right noprint">
 
               <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-actions-navbar-collapse">
                   <span class="sr-only">Toggle page actions</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -265,7 +265,7 @@ if ($this->data['loggedin']) {
                 <div class="navbar-brand visible-xs">Page Actions</div>
               </div>
 
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div class="collapse navbar-collapse" id="page-actions-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right" role="navigation">
                   <?php
                     // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
@@ -492,12 +492,16 @@ if ($this->data['loggedin']) {
           $navTemp = $this->data['content_actions']['edit'];
 
           if ($navTemp) { ?>
-            <div id="b-edit" class="navbar-btn">
+            <div id="b-edit" class="navbar-btn hidden-xs">
               <a href="<?php echo $navTemp['href']; ?>" class="btn btn-primary">
                 <i class="fa fa-edit fa-lg"></i>
                 <?php echo $navTemp['text']; ?>
               </a>
             </div>
+            <a href="<?php echo $navTemp['href']; ?>" class="visible-xs">
+              <i class="fa fa-edit fa-lg"></i>
+              <?php echo $navTemp['text']; ?>
+            </a>
           <?php } 
         break;
 
