@@ -1,196 +1,195 @@
 /* Add your custom theme overrides here */
 
 body {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 .row {
     margin-top: 30px;
     @media (max-width: @screen-xs-max) {
-    	margin-top: 0;
+        margin-top: 0;
     }
 }
 
 #p-logo a:hover {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .nav-pills.nav-pills-inverse {
 
-	.dropdown .caret {
-			border-top-color: #fff;
-			border-bottom-color: #fff;
-	}
+    .dropdown .caret {
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+    }
 
-	>li {
-		>a {
-			color: #fff;
-		
-			&:hover,
-			&:focus {
-				background-color: @gray;
-				color: #fff;
+    >li {
+        >a {
+            color: #fff;
+        
+            &:hover,
+            &:focus {
+                background-color: @gray;
+                color: #fff;
 
-				.caret {
-					border-top-color: #fff;
-					border-bottom-color: #fff;
-				}
-			}
-		}
+                .caret {
+                    border-top-color: #fff;
+                    border-bottom-color: #fff;
+                }
+            }
+        }
 
-		&.open>a,
-		&.open>a:hover,
-		&.open>a:focus {
-			color: lighten(@link-color, 20%);
-			background-color: transparent;
+        &.open>a,
+        &.open>a:hover,
+        &.open>a:focus {
+            color: lighten(@link-color, 20%);
+            background-color: transparent;
 
-			.caret {
-				border-top-color: lighten(@link-color, 20%);
-				border-bottom-color: lighten(@link-color, 20%);
-			}
-		}
-	}
+            .caret {
+                border-top-color: lighten(@link-color, 20%);
+                border-bottom-color: lighten(@link-color, 20%);
+            }
+        }
+    }
 }
 
 .navbar-transparent-nav-base() {
-	>li>a {
-		color: @text-color;
-		text-decoration: none;
-		text-shadow: 0 1px 0 #fff;
+    >li>a {
+        color: @text-color;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
 
-		.caret {
-			border-top-color: @text-color;
-			border-bottom-color: @text-color;
-		}
+        .caret {
+            border-top-color: @text-color;
+            border-bottom-color: @text-color;
+        }
 
-		&:focus,
-		&:hover {
-			color: darken(@text-color, 15%);
-			background-color: transparent;
+        &:focus,
+        &:hover {
+            color: darken(@text-color, 15%);
+            background-color: transparent;
 
-			//  navbar elements get background color on focus/hover when collapsed
-			
-			// @media (max-width: @grid-float-breakpoint) {
-			// 	background-color: @hover-color;
-			// }
+            //  navbar elements get background color on focus/hover when collapsed
+            
+            // @media (max-width: @grid-float-breakpoint) {
+            //  background-color: @hover-color;
+            // }
 
-			.caret {
-				border-top-color: darken(@text-color, 15%);
-				border-bottom-color: darken(@text-color, 15%);
-			}
-		}
-	}
+            .caret {
+                border-top-color: darken(@text-color, 15%);
+                border-bottom-color: darken(@text-color, 15%);
+            }
+        }
+    }
 
-	.open>a,
-	.open>a:hover,
-	.open>a:focus {
-		color: @link-color;
-		background-color: transparent;
+    .open>a,
+    .open>a:hover,
+    .open>a:focus {
+        color: @link-color;
+        background-color: transparent;
 
-		//  navbar elements get background color on focus/hover when collapsed
+        //  navbar elements get background color on focus/hover when collapsed
 
-		// @media (max-width: @grid-float-breakpoint) {
-		// 	background-color: @hover-color;
-		// }
+        // @media (max-width: @grid-float-breakpoint) {
+        //  background-color: @hover-color;
+        // }
 
-		.caret {
-			border-top-color: @link-color;
-			border-bottom-color: @link-color;
-		}
-	}
+        .caret {
+            border-top-color: @link-color;
+            border-bottom-color: @link-color;
+        }
+    }
 }
 
 .navbar-md-transparent {
-	@media (min-width: @grid-float-breakpoint) {
-		background-color: transparent;
-		border: 0;
-	}
+    @media (min-width: @grid-float-breakpoint) {
+        background-color: transparent;
+        border: 0;
+    }
 
-	.nav {
-		// Dividers get darker when collapsed
-
-		@media (max-width: @grid-float-breakpoint) {
-			.dropdown-menu>li.divider {
-				background-color: @border-color;
-			}
-		}
-
-		@media (min-width: @grid-float-breakpoint) {
-			.navbar-transparent-nav-base;
-		}
-	}
+    .nav {
+        @media (min-width: @grid-float-breakpoint) {
+            .navbar-transparent-nav-base;
+        }
+    }
 }
 
-.navbar-transparent {	
-	.nav {
-		.navbar-transparent-nav-base;
-		// Dividers get darker when collapsed
+.navbar-transparent {   
+    .nav {
+        .navbar-transparent-nav-base;
+        
+        // Dividers get darker when collapsed
 
-		@media (min-width: @grid-float-breakpoint) {
+        @media (max-width: @grid-float-breakpoint) {
+            .dropdown-menu>li.divider {
+                background-color: @border-color;
+            }
+        }
 
-			>li>a {
-				&:focus,
-				&:hover {
+        @media (min-width: @grid-float-breakpoint) {
 
-					//  navbar elements get background color on focus/hover when collapsed
-					
-					@media (max-width: @grid-float-breakpoint) {
-						background-color: @hover-color;
-					}
-				}
-			}
+            >li>a {
+                &:focus,
+                &:hover {
 
-			.open>a,
-			.open>a:hover,
-			.open>a:focus {
+                    //  navbar elements get background color on focus/hover when collapsed
+                    
+                    @media (max-width: @grid-float-breakpoint) {
+                        background-color: @hover-color;
+                    }
+                }
+            }
 
-				//  navbar elements get background color on focus/hover when collapsed
+            .open>a,
+            .open>a:hover,
+            .open>a:focus {
 
-				@media (max-width: @grid-float-breakpoint) {
-					background-color: @hover-color;
-				}
-			}
-		}
-	}
+                //  navbar elements get background color on focus/hover when collapsed
+
+                @media (max-width: @grid-float-breakpoint) {
+                    background-color: @hover-color;
+                }
+            }
+        }
+    }
 }
 
 .labstrap-card {
-	padding: 20px;
-	border-radius: 5px;
-	@media (max-width: @screen-xs-max) {
-		border-radius: 0;
-		// padding: 10px;
-	}
+    padding: 20px;
+    border-radius: 5px;
+    @media (max-width: @screen-xs-max) {
+        border-radius: 0;
+        // padding: 10px;
+    }
 
-	.nav {
-		margin-bottom: 0;
-	}
+    .nav {
+        margin-bottom: 0;
+    }
 
-	&.row {
-		padding-left: 0;
-		padding-right: 0;
-	}
+    &.row {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .labstrap-card-light {
-	background-color: @lightbg-color;
-	border: 1px solid @border-color;
+    background-color: @lightbg-color;
+    border: 1px solid @border-color;
 
-	h1, h2, h3, h4, h5, h6 {
-		color: #58595b;
-	}
+    h1, h2, h3, h4, h5, h6 {
+        color: #58595b;
+    }
 }
 
 .labstrap-card-dark {
-	background-color: @darkbg-color;
-	border: 1px solid @darkbg-color;
-	color: lighten(@text-color, 30%);
-	a {
-		color: lighten(@link-color, 20%);
+    background-color: @darkbg-color;
+    border: 1px solid @darkbg-color;
+    color: lighten(@text-color, 30%);
+    a {
+        color: lighten(@link-color, 20%);
 
-		&:focus,
-		&:hover {
-			color: lighten(@link-color, 30%);
-		}
-	}
+        &:focus,
+        &:hover {
+            color: lighten(@link-color, 30%);
+        }
+    }
 }
