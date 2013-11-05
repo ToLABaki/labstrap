@@ -47,42 +47,44 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-menu {
     border-radius: 5px;
 
-    // Adds an arrow on the top left of the dropdown menu
+    @media (min-width: @grid-float-breakpoint) {
+        // Adds an arrow on the top left of the dropdown menu
 
-    &:before {
-        content: "";
-        display: inline-block;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid #ccc;
-        border-bottom-color: rgba(0,0,0,0.2);
-        position: absolute;
-        top: -7px;
-        left: 9px;
-    }
-
-    &:after {
-        content: "";
-        display: inline-block;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid #fff;
-        position: absolute;
-        top: -6px;
-        left: 10px;
-    }
-
-    // Adds an arrow on the top right of the dropdown menu
-    
-    &.pull-right {
         &:before {
-            left: auto;
-            right: 9px;
+            content: "";
+            display: inline-block;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid #ccc;
+            border-bottom-color: rgba(0,0,0,0.2);
+            position: absolute;
+            top: -7px;
+            left: 9px;
         }
 
         &:after {
-            left: auto;;
-            right: 10px;
+            content: "";
+            display: inline-block;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #fff;
+            position: absolute;
+            top: -6px;
+            left: 10px;
+        }
+
+        // Adds an arrow on the top right of the dropdown menu
+        
+        &.pull-right {
+            &:before {
+                left: auto;
+                right: 9px;
+            }
+
+            &:after {
+                left: auto;;
+                right: 10px;
+            }
         }
     }
 }

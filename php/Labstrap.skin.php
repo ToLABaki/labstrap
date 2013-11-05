@@ -146,49 +146,35 @@ class LabstrapTemplate extends BaseTemplate {
     $this->html( 'headelement' );
 ?>
 
-<?php /* Checks if user has edit privileges */ ?>
-<?php /*if ( $wgGroupPermissions['*']['edit'] || $wgLabstrapSkinAnonNavbar || $this->data['loggedin'] ) {*/ ?>
-<?php /*}*/ ?>
-
-<!-- Top labaki sitebar placeholder -->
-<!-- <div id="userbar" class="navbar-inverse navbar navbar-static noprint">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><a href="#">wiki</a></li>
-      <li><a href="#">blog</a></li>
-      <li><a href="#">code</a></li>
-      <li><a href="#">email</a></li>
-    </ul>
-  </div>
-</div>
- -->
 <div id="mw-page-base" class="noprint"></div>
 <div id="mw-head-base" class="noprint"></div>
 
 <!-- Header -->
 <header class="header">
   <div id="page-header" class="container noprint">
-    <div class="row">
-      <div class="labstrap-card labstrap-card-light">
-        <!-- Search and personal menu -->
-        <div class="navbar navbar-transparent navbar-right pull-desktop">
-            <?php
-              if ($wgSearchPlacement['header']) {
-                $this->renderNavigation( array( 'SEARCH' ) ); 
-              }
 
-              $this->renderNavigation( array( 'PERSONAL' ) ); 
-            ?>
-        </div>
-        <!-- logo -->
-        <div class="logo">
+    <div class="row labstrap-card labstrap-card-light">
+      <!-- logo -->
+      <div class="logo col-md-6 col-sm-6">
+        <?php
+        if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
+          $this->renderLogo();
+        } ?>
+      </div>
+      <!-- Search and personal menu -->
+      <div class="col-md-6 col-sm-6 navbar navbar-transparent">
+        <div class="navbar-right">
           <?php
-          if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
-            $this->renderLogo();
-          } ?>
+            if ($wgSearchPlacement['header']) {
+              $this->renderNavigation( array( 'SEARCH' ) ); 
+            }
+
+            $this->renderNavigation( array( 'PERSONAL' ) ); 
+          ?>
         </div>
       </div>
     </div>
+
 
     <div class="row">
       <nav class="labstrap-card labstrap-card-dark">
@@ -267,38 +253,50 @@ if ($this->data['loggedin']) {
           # If there's no custom layout, then we automagically add one ?>
           <div id="innerbodycontent" class="nolayout"><div class="">
             <!-- page actions -->
-            <div class="navbar navbar-transparent navbar-right pull-desktop noprint">
-              <ul class="nav navbar-nav navbar-right" role="navigation">
-                <?php
-                  // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
-                  //   $this->renderLogo();
-                  // }
+            <div class="navbar navbar-md-transparent navbar-default navbar-right noprint">
 
-                  # Page header & menu
-                  $this->renderNavigation( array( 'PAGE' ) );
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle page actions</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand visible-xs">Page Actions</div>
+              </div>
 
-                  # This content in other languages
-                  if ( $this->data['language_urls'] ) {
-                    $this->renderNavigation( array( 'LANGUAGES' ) );
-                  }
-                  # Actions menu
-                  $this->renderNavigation( array( 'ACTIONS' ) ); 
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" role="navigation">
+                  <?php
+                    // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
+                    //   $this->renderLogo();
+                    // }
 
-                  if ( !isset( $portals['TOOLBOX'] ) ) {
-                    $this->renderNavigation( array( 'TOOLBOX' ) ); 
-                  }
-                  # Sidebar items to display in navbar
-                  // $this->renderNavigation( array( 'SIDEBARNAV' ) );
-                ?>
-                
-                <li>
-                <?php
-                  # Edit button
-                  $this->renderNavigation( array( 'EDIT' ) ); 
-                ?>
-                </li>
+                    # Page header & menu
+                    $this->renderNavigation( array( 'PAGE' ) );
 
-              </ul>
+                    # This content in other languages
+                    if ( $this->data['language_urls'] ) {
+                      $this->renderNavigation( array( 'LANGUAGES' ) );
+                    }
+                    # Actions menu
+                    $this->renderNavigation( array( 'ACTIONS' ) ); 
+
+                    if ( !isset( $portals['TOOLBOX'] ) ) {
+                      $this->renderNavigation( array( 'TOOLBOX' ) ); 
+                    }
+                    # Sidebar items to display in navbar
+                    // $this->renderNavigation( array( 'SIDEBARNAV' ) );
+                  ?>
+                  
+                  <li>
+                    <?php
+                      # Edit button
+                      $this->renderNavigation( array( 'EDIT' ) ); 
+                    ?>
+                  </li>
+                </ul>
+              </div>
             </div>
             <!-- page actions -->
 
@@ -688,10 +686,10 @@ if ($this->data['loggedin']) {
         case 'SEARCH':
           ?>
             <form class="navbar-form navbar-left" action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-              <div class="form-group">
+              <div style="position: relative" class="form-group">
                 <input id="searchInput" class="search-query form-control" type="search" accesskey="f" title="<?php $this->text('searchtitle'); ?>" placeholder="<?php $this->msg('search'); ?>" name="search" value="<?php echo htmlspecialchars ($this->data['search']); ?>">
+                <button id="mw-searchButton" class="searchButton btn"><i class="fa fa-search"></i></button>
               </div>
-              <?php echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn hidden' ) ); ?>
             </form>
 
           <?php

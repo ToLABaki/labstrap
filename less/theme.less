@@ -6,6 +6,9 @@ body {
 
 .row {
     margin-top: 30px;
+    @media (max-width: @screen-xs-max) {
+    	margin-top: 0;
+    }
 }
 
 #p-logo a:hover {
@@ -24,8 +27,7 @@ body {
 			color: #fff;
 		
 			&:hover,
-			&:focus,
-			&:active {
+			&:focus {
 				background-color: @gray;
 				color: #fff;
 
@@ -38,21 +40,19 @@ body {
 
 		&.open>a,
 		&.open>a:hover,
-		&.open>a:focus,
-		&.open>a:active {
-			color: @link-color;
+		&.open>a:focus {
+			color: lighten(@link-color, 20%);
 			background-color: transparent;
 
 			.caret {
-				border-top-color: @link-color;
-				border-bottom-color: @link-color;
+				border-top-color: lighten(@link-color, 20%);
+				border-bottom-color: lighten(@link-color, 20%);
 			}
 		}
 	}
 }
 
-.navbar-transparent .nav {
-	
+.navbar-transparent-nav-base() {
 	>li>a {
 		color: @text-color;
 		text-decoration: none;
@@ -64,10 +64,15 @@ body {
 		}
 
 		&:focus,
-		&:active,
 		&:hover {
 			color: darken(@text-color, 15%);
 			background-color: transparent;
+
+			//  navbar elements get background color on focus/hover when collapsed
+			
+			// @media (max-width: @grid-float-breakpoint) {
+			// 	background-color: @hover-color;
+			// }
 
 			.caret {
 				border-top-color: darken(@text-color, 15%);
@@ -78,10 +83,15 @@ body {
 
 	.open>a,
 	.open>a:hover,
-	.open>a:focus,
-	.open>a:active {
+	.open>a:focus {
 		color: @link-color;
 		background-color: transparent;
+
+		//  navbar elements get background color on focus/hover when collapsed
+
+		// @media (max-width: @grid-float-breakpoint) {
+		// 	background-color: @hover-color;
+		// }
 
 		.caret {
 			border-top-color: @link-color;
@@ -90,11 +100,75 @@ body {
 	}
 }
 
+.navbar-md-transparent {
+	@media (min-width: @grid-float-breakpoint) {
+		background-color: transparent;
+		border: 0;
+	}
+
+	.nav {
+		// Dividers get darker when collapsed
+
+		@media (max-width: @grid-float-breakpoint) {
+			.dropdown-menu>li.divider {
+				background-color: @border-color;
+			}
+		}
+
+		@media (min-width: @grid-float-breakpoint) {
+			.navbar-transparent-nav-base;
+		}
+	}
+}
+
+.navbar-transparent {	
+	.nav {
+		.navbar-transparent-nav-base;
+		// Dividers get darker when collapsed
+
+		@media (min-width: @grid-float-breakpoint) {
+
+			>li>a {
+				&:focus,
+				&:hover {
+
+					//  navbar elements get background color on focus/hover when collapsed
+					
+					@media (max-width: @grid-float-breakpoint) {
+						background-color: @hover-color;
+					}
+				}
+			}
+
+			.open>a,
+			.open>a:hover,
+			.open>a:focus {
+
+				//  navbar elements get background color on focus/hover when collapsed
+
+				@media (max-width: @grid-float-breakpoint) {
+					background-color: @hover-color;
+				}
+			}
+		}
+	}
+}
+
 .labstrap-card {
 	padding: 20px;
 	border-radius: 5px;
+	@media (max-width: @screen-xs-max) {
+		border-radius: 0;
+		// padding: 10px;
+	}
+
 	.nav {
 		margin-bottom: 0;
+	}
+
+	&.row {
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
