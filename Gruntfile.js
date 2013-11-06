@@ -11,6 +11,7 @@ module.exports = function (grunt) {
         concat: {
             bootstrapMediawikiJs: {
                 src: [
+                    "bootstrap/js/transition.js",
                     "bootstrap/js/collapse.js",
                     "bootstrap/js/dropdown.js"
                 ],
