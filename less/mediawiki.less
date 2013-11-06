@@ -83,11 +83,11 @@ input + label {
 /* Split a column in half */
 @media (min-width: 480px) {
       .column-split {
-        -moz-columns: 2 20px;
         -webkit-columns: 2 20px;
+        -moz-columns: 2 20px;
         columns: 2 20px;
-        -moz-column-fill: balance;
         -webkit-column-fill: balance;
+        -moz-column-fill: balance;
         column-fill: balance;
     }
 }
@@ -365,15 +365,23 @@ input + label {
     .pad-left-small .column-split,
     .pad-right-small .column-split,
     .pad-sides-small .column-split {
-        -moz-column-gap: 30px;
+
+        // .recess-hangs-with-this-order-go-figure {
+        //     -moz-column-gap: 30px;
+        //     -webkit-column-gap: 30px;
+        //     column-gap: 30px;
+        // }
+        // https://github.com/twitter/recess/issues/22
+        
         -webkit-column-gap: 30px;
+        -moz-column-gap: 30px;
         column-gap: 30px;
     }
     .pad-left .column-split,
     .pad-right .column-split,
     .pad-sides .column-split {
-        -moz-column-gap: 40px;
         -webkit-column-gap: 40px;
+        -moz-column-gap: 40px;
         column-gap: 40px;
     }
 }
