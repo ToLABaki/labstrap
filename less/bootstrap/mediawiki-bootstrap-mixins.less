@@ -1,9 +1,5 @@
 // Mediawiki classes mixed in with bootstrap classes, bootstrap.less needs to be included
 
-// img {
-//     .img-responsive;
-// }
-
 .toc {
     .well;
     margin: 0;
@@ -29,9 +25,13 @@
 }
 
 .thumb {
-    .img-thumbnail;
+    .img-thumbnail();
     margin: 5px;
     background-color: #fff;
+}
+
+.image img {
+    .img-responsive();
 }
 
 input[type="submit"] {

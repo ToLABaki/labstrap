@@ -1,6 +1,7 @@
 /*
  * Strapping-specific scripts
  */
+ 
 jQuery(function($) {
   var $nav = $('#page-header ul.navigation'),
       $searchLink = $nav.find('a.search-link'),
@@ -33,5 +34,13 @@ jQuery(function($) {
       // Convert <esc> into a blur
       if (ev.keyCode === 27) { this.blur(); }
     }
+  });
+
+  // Make thumbnails responsive
+
+  $(".thumbinner").each(function (index, element) { 
+    $(element)
+      .css("max-width", $(element).width())
+      .css("width", "auto")
   });
 });
