@@ -150,12 +150,18 @@ class LabstrapTemplate extends BaseTemplate {
 <div id="mw-head-base" class="noprint"></div>
 
 <!-- Header -->
-<header class="header">
-  <div id="page-header" class="container noprint">
+<header id="page-header" class="header container noprint">
 
     <div class="row labstrap-card labstrap-card-light">
       <!-- logo -->
       <div class="logo col-md-6 col-sm-6">
+        <button class="btn btn-default btn-lg labstrap-header-menu-button"
+                href="#"
+                data-toggle="slide"
+                data-target="#card-slide-nav">
+          <span class="sr-only">Toggle header navigation menu</span>
+          <i class="fa fa-lg fa-reorder"></i>
+        </button>
         <?php
         if ( $wgLabstrapSkinLogoLocation == 'bodycontent' ) {
           $this->renderLogo();
@@ -168,28 +174,32 @@ class LabstrapTemplate extends BaseTemplate {
             if ($wgSearchPlacement['header']) {
               $this->renderNavigation( array( 'SEARCH' ) ); 
             }
-
-            $this->renderNavigation( array( 'PERSONAL' ) ); 
           ?>
+          <ul class="nav navbar-nav navbar-right hidden-xs" role="navigation">
+            <?php $this->renderNavigation( array( 'PERSONAL_LISTITEMS' ) ); ?>
+          </ul>
         </div>
       </div>
     </div>
 
-
-    <div class="row">
-      <nav class="labstrap-card labstrap-card-dark">
-        <ul class="nav nav-pills nav-pills-inverse searchform-disabled">
-          <?php
-          $this->renderNavigation( array( 'SIDEBAR' ) );
-          // Horizontal accordion search fo navbar
-          // if ($wgSearchPlacement['nav']) {
-          //   $this->renderNavigation( array( 'SEARCHNAV' ) );
-          // }
-          ?>
-        </ul>
-      </nav>
-    </div>
-  </div>
+    <nav class="row labstrap-card labstrap-card-dark labstrap-card-slide" id="card-slide-nav">
+      <button class="close close-inverse"
+              href="#"
+              data-toggle="slide"
+              data-target="#card-slide-nav">
+        &times;
+      </button>
+      <ul class="nav navbar-nav nav-pills nav-pills-inverse searchform-disabled">
+        <?php $this->renderNavigation( array( 'PERSONAL_LISTITEMS_VISIBLE_XS' ) ); ?>
+        <?php
+        $this->renderNavigation( array( 'SIDEBAR' ) );
+        // Horizontal accordion search fo navbar
+        // if ($wgSearchPlacement['nav']) {
+        //   $this->renderNavigation( array( 'SEARCHNAV' ) );
+        // }
+        ?>
+      </ul>
+    </nav>
 </header>
 
 <?php
@@ -208,7 +218,7 @@ if ($this->data['loggedin']) {
 ?>
 
 <!-- content -->
-<div class="main-section">
+<?php /* FIXME: echo $useuserStateClass  returns 0? */ ?>
 <section id="content" class="mw-body container <?php echo $userStateClass; ?>">
   <div id="top"></div>
   <div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
@@ -218,8 +228,7 @@ if ($this->data['loggedin']) {
   <!-- /sitenotice -->
 <?php endif; ?>
 <!-- bodyContent -->
-<div id="bodyContent" class="row">
-    <div class="labstrap-card labstrap-card-light">
+<div id="bodyContent" class="row labstrap-card labstrap-card-light">
   <?php if( $this->data['newtalk'] ): ?>
   <!-- newtalk -->
   <div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
@@ -251,70 +260,91 @@ if ($this->data['loggedin']) {
         </div>
         <?php } else {
           # If there's no custom layout, then we automagically add one ?>
-          <div id="innerbodycontent" class="nolayout"><div class="">
-            <!-- page actions -->
-            <div class="navbar navbar-md-transparent navbar-default navbar-right noprint">
+          <div id="innerbodycontent" class="nolayout">
+            
+            <div class="content-heading-container">
 
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-actions-navbar-collapse">
-                  <span class="sr-only">Toggle page actions</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand visible-xs">Page Actions</div>
-              </div>
+              <?php /* Page headers are inserted here so that the navbar will appear under them in smaller displays */ ?>
 
-              <div class="collapse navbar-collapse" id="page-actions-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right" role="navigation">
-                  <?php
-                    // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
-                    //   $this->renderLogo();
-                    // }
+              <h1 id="firstHeading" class="visible-xs firstHeading page-header">
+                <span dir="auto"><?php $this->html( 'title' ) ?></span>
+              </h1>
+              <!-- subtitle -->
+              <?php if ($this->data['subtitle']): ?>
+              <div id="contentSub" class="visible-xs well well-small" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+              <?php endif; ?>
+              <!-- /subtitle -->
+              <!-- undelete -->
+              <?php if ( $this->data['undelete'] ): ?>
+              <div id="contentSub2" class="visible-xs well well-small"><?php $this->html( 'undelete' ) ?></div>
+              <?php endif; ?>
+              <!-- /undelete -->
 
-                    # Page header & menu
-                    $this->renderNavigation( array( 'PAGE' ) );
+              <!-- page actions -->
+              <div class="navbar navbar-md-transparent navbar-default navbar-right noprint">
 
-                    # This content in other languages
-                    if ( $this->data['language_urls'] ) {
-                      $this->renderNavigation( array( 'LANGUAGES' ) );
-                    }
-                    # Actions menu
-                    $this->renderNavigation( array( 'ACTIONS' ) ); 
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#page-actions-navbar-collapse">
+                    <span class="sr-only">Toggle page actions</span>
+                    <i class="fa fa-wrench"></i>
+                  </button>
+                  <div class="navbar-brand visible-xs">Page Actions</div>
+                </div>
 
-                    if ( !isset( $portals['TOOLBOX'] ) ) {
-                      $this->renderNavigation( array( 'TOOLBOX' ) ); 
-                    }
-                    # Sidebar items to display in navbar
-                    // $this->renderNavigation( array( 'SIDEBARNAV' ) );
-                  ?>
-                  
-                  <li>
+                <div class="collapse navbar-collapse" id="page-actions-navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right" role="navigation">
                     <?php
-                      # Edit button
-                      $this->renderNavigation( array( 'EDIT' ) ); 
-                    ?>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- page actions -->
+                      // if ( $wgLabstrapSkinLogoLocation == 'navbar' ) {
+                      //   $this->renderLogo();
+                      // }
 
-            <h1 id="firstHeading" class="firstHeading page-header">
-              <span dir="auto"><?php $this->html( 'title' ) ?></span>
-            </h1>
-            <!-- subtitle -->
-            <?php if ($this->data['subtitle']): ?>
-            <div id="contentSub" class="well well-small" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
-            <?php endif; ?>
-            <!-- /subtitle -->
-            <?php if ( $this->data['undelete'] ): ?>
-            <!-- undelete -->
-            <div id="contentSub2" class="well well-small"><?php $this->html( 'undelete' ) ?></div>
-            <!-- /undelete -->
-          <?php endif; ?>
+                      # Page header & menu
+                      $this->renderNavigation( array( 'PAGE' ) );
+
+                      # This content in other languages
+                      if ( $this->data['language_urls'] ) {
+                        $this->renderNavigation( array( 'LANGUAGES' ) );
+                      }
+                      # Actions menu
+                      $this->renderNavigation( array( 'ACTIONS' ) ); 
+
+                      if ( !isset( $portals['TOOLBOX'] ) ) {
+                        $this->renderNavigation( array( 'TOOLBOX' ) ); 
+                      }
+                      # Sidebar items to display in navbar
+                      // $this->renderNavigation( array( 'SIDEBARNAV' ) );
+                    ?>
+                    
+                    <li>
+                      <?php
+                        # Edit button
+                        $this->renderNavigation( array( 'EDIT' ) ); 
+                      ?>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- page actions -->
+
+              <?php /* Page headers are re-inserted here so that the navbar will float correctly to the right on bigger displays */ ?>
+
+              <h1 id="firstHeading" class="hidden-xs firstHeading page-header">
+                <span dir="auto"><?php $this->html( 'title' ) ?></span>
+              </h1>
+              <!-- subtitle -->
+              <?php if ($this->data['subtitle']): ?>
+              <div id="contentSub" class="hidden-xs well well-small" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+              <?php endif; ?>
+              <!-- /subtitle -->
+              <!-- undelete -->
+              <?php if ( $this->data['undelete'] ): ?>
+              <div id="contentSub2" class="hidden-xs well well-small"><?php $this->html( 'undelete' ) ?></div>
+              <?php endif; ?>
+              <!-- /undelete -->
+
+            </div>
           <?php $this->html( 'bodycontent' ); ?>
-        </div></div>
+        </div>
         <?php } ?>
         <!-- /innerbodycontent -->
 
@@ -339,18 +369,14 @@ if ($this->data['loggedin']) {
   <!-- debughtml -->
   <?php $this->html( 'debughtml' ); ?>
   <!-- /debughtml -->
-</div></div>
+</div>
 <!-- /bodyContent -->
 </section>
 <!-- /content -->
-</div>
-<!-- /main-section -->
 
 <!-- footer -->
-<footer id="footer" class="footer "<?php $this->html( 'userlangattributes' ) ?>>
-  <div class="container">
-    <div class="row">
-      <div class="labstrap-card labstrap-card-dark">
+<footer id="footer" class="footer container"<?php $this->html( 'userlangattributes' ) ?>>
+      <div class="row labstrap-card labstrap-card-dark">
       <?php
       /* Make footer static for now, maybe add/remove links via mediawiki later? */
       /* http://www.mediawiki.org/wiki/Manual:Footer */
@@ -433,9 +459,6 @@ if ($this->data['loggedin']) {
   <?php      /*endforeach;*/ ?>
 <!-- </ul> -->
 <?php /*endif;*/ ?>
-</div>
-</div>
-<div class="row"></div>
 </div>
 </footer>
 <!-- /footer -->
@@ -633,7 +656,7 @@ if ($this->data['loggedin']) {
         break;
 
 
-        case 'PERSONAL':
+        case 'PERSONAL_LISTITEMS':
           $theMsg = 'personaltools';
           $theData = $this->getPersonalTools();
           $theTitle = $this->data['username'];
@@ -645,7 +668,7 @@ if ($this->data['loggedin']) {
           }
 
           ?>
-          <ul class="nav navbar-nav navbar-right" role="navigation">
+          <!-- <ul class="nav navbar-nav navbar-right" role="navigation"> -->
             <li class="dropdown" id="p-notifications" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
             <?php if ( array_key_exists('notifications', $theData) ) {
               echo $this->makeListItem( 'notifications', $theData['notifications'] );
@@ -682,7 +705,60 @@ if ($this->data['loggedin']) {
               } ?>
               </ul>
             </li>
-          </ul>
+          <!-- </ul> -->
+          <?php
+        break;
+
+        case 'PERSONAL_LISTITEMS_VISIBLE_XS':
+          $theMsg = 'personaltools';
+          $theData = $this->getPersonalTools();
+          $theTitle = $this->data['username'];
+
+          foreach ( $theData as $key => $item ) {
+            if ( !preg_match('/(notifications|login|createaccount)/', $key) ) {
+              $showPersonal = true;
+            }
+          }
+
+          ?>
+          <!-- <ul class="nav navbar-nav navbar-right" role="navigation"> -->
+            <li class="dropdown visible-xs" id="p-notifications" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
+            <?php if ( array_key_exists('notifications', $theData) ) {
+              echo $this->makeListItem( 'notifications', $theData['notifications'] );
+            } ?>
+            </li>
+            <?php if ( $wgLabstrapSkinLoginLocation == 'navbar' ): ?>
+            <li class="dropdown visible-xs" id="p-createaccount" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
+              <?php if ( array_key_exists('createaccount', $theData) ) {
+                echo $this->makeListItem( 'createaccount', $theData['createaccount'] );
+              } ?>
+            </li>
+            <li class="dropdown visible-xs" id="p-login" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
+            <?php if ( array_key_exists('login', $theData) ) {
+                echo $this->makeListItem( 'login', $theData['login'] );
+            } ?>
+            </li>
+            <?php endif; ?>
+            <li class="dropdown visible-xs" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( !$showPersonal ) echo ' emptyPortlet'; ?>">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">
+                <i class="fa fa-user fa-lg"></i>
+                <?php echo $theTitle; ?> <b class="caret"></b></a>
+              <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
+              <?php foreach( $theData as $key => $item ) {
+
+                if (preg_match('/preferences|logout/', $key)) {
+                  echo '<li class="divider"></li>';
+                } 
+                // Do Show other user options
+                // else if ( preg_match('/(notifications|login|createaccount)/', $key) ) {
+                  // continue;
+                // }
+
+                echo $this->makeListItem( $key, $item );
+              } ?>
+              </ul>
+            </li>
+          <!-- </ul> -->
           <?php
         break;
 
