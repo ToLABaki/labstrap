@@ -76,14 +76,14 @@ module.exports = function (grunt) {
             },
 
             bootstrapStandaloneCss: {
-                src: ["less/bootstrap/swatch.less"],
+                src: ["less/bootstrap/bootstrap.less"],
                 dest: bootstrapStandaloneBuildPath + "css/bootstrap.css"
             },
             bootstrapStandaloneMinCss: {
                 options: {
                     compress: true
                 },
-                src: ["less/bootstrap/swatch.less"],
+                src: ["less/bootstrap/bootstrap.less"],
                 dest: bootstrapStandaloneBuildPath + "css/bootstrap.min.css"
             },
 
