@@ -13,7 +13,8 @@ module.exports = function (grunt) {
                 src: [
                     "bootstrap/js/transition.js",
                     "bootstrap/js/collapse.js",
-                    "bootstrap/js/dropdown.js"
+                    "bootstrap/js/dropdown.js",
+                    "js/bootstrap/slide.js"
                 ],
                 dest: bootstrapMediawikiBuildPath + "js/bootstrap.js"
             },
@@ -160,13 +161,22 @@ module.exports = function (grunt) {
                     "copyto:mediawikiPhp"
                 ]
             },
-            js: {
+            mediawikiJs: {
                 files: [
                     "js/*.js",
                     "js/*.htc"
                 ],
                 tasks: [
                     "copyto:mediawikiJs"
+                ]
+            },
+            bootstrapJs: {
+                files: [
+                    "js/bootstrap/*.js"
+                ],
+                tasks: [
+                    "concat:bootstrapMediawikiJs",
+                    "uglify:bootstrapMediawikiJs"
                 ]
             }
         },
