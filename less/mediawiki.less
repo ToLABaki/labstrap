@@ -13,6 +13,13 @@ a:not([name]) {
     cursor: pointer;
 }
 
+// Give forms some air
+
+input:not([type]),
+textarea {
+    margin-bottom: 10px;
+}
+
 // Make the edit form larger 
 
 #editform textarea,
@@ -490,4 +497,14 @@ li.gallerybox {
 
 .dropdown-menu .divider:first-child {
     display: none;
+}
+
+// Make buttons in edit page stack on smaller displays
+
+@media (max-width: @grid-float-breakpoint) {
+    .editButtons>input {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
 }

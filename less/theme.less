@@ -37,9 +37,9 @@ body {
 .labstrap-card-slide {
     @media (max-width: @grid-float-breakpoint) {
         left: -100%;
-        height: 100%;
         position: fixed;
         top: 0;
+        bottom: 0;
         overflow-y: auto;
         z-index: @zindex-modal;
         
@@ -48,14 +48,16 @@ body {
             min-width: @screen-xs-min;
         }
 
-        // Padding to accomodate close button
-        
-        padding-top: (@font-size-base * 1.5) + 10 !important;
-
         .close {
             position: relative;
-            top: -(@font-size-base * 1.5) - 5;
+            top: -@labstrap-card-padding;
+            right: -(@labstrap-card-padding / 2);
         }
+
+        .nav {
+            margin: 0 10px 10px 10px;
+        }
+
     }
 
     @media (min-width: @grid-float-breakpoint) {

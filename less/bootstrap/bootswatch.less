@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
 // Buttons
 // --------------------------------------------------
 
+.btn {
+    .transition(all 0.35s);
+}
+
 .btn-default {
     &:hover,
     &:focus,
@@ -100,12 +104,8 @@ h1, h2, h3, h4, h5, h6 {
 // Slightly animate the dropdown-menus
 
 .dropdown-menu li > a {
-    -moz-transition: all 0.1s;
-    -webkit-transition: all 0.1s;
-    transition: all 0.1s;
+    .transition(all 0.1s);
 }
 .dropdown-menu li > a:hover {
-    -moz-transition: all 0.025s;
-    -webkit-transition: all 0.025s;
-    transition: all 0.025s;
+    .transition(all 0.25s);
 }
