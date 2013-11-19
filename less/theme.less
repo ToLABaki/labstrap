@@ -10,6 +10,18 @@ body {
     background-color: transparent;
 }
 
+// Brand flavored selection color
+
+::selection {
+    background-color: @brand-primary;
+    color: #fff;
+}
+
+::-moz-selection {
+    background-color: @brand-primary;
+    color: #fff;
+}
+
 // Menu button to display a slideable card, appears on small displays
 
 .labstrap-header-menu-button {
@@ -56,6 +68,16 @@ body {
 
         .nav {
             margin: 0 10px 10px 10px;
+
+            // Add seperators between slider elements
+
+            >li+li:after {
+                border-bottom: 1px solid darken(@darkbg-color, 7%);
+                box-shadow: 0 1px lighten(@darkbg-color, 7%);
+                content: "";
+                display: block;
+                margin: 10px 0;
+            }
         }
 
     }
@@ -135,6 +157,7 @@ footer .labstrap-card {
     background-color: @darkbg-color;
     border-color: @darkbg-color;
     color: lighten(@text-color, 30%);
+    
     a {
         color: lighten(@link-color, 20%);
 

@@ -394,7 +394,7 @@ if ($this->data['loggedin']) {
             $loginType = 'anonlogin';
           }
 
-          ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><?php echo $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
+          ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><i class="fa fa-sign-in fa-lg"></i><?php echo " " . $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
         }?>
         <li><a href="/w/To_Labaki:About" title="To Labaki:About"><i class="fa fa-info-circle fa-lg"></i> Σχετικά</a></li>
         <li><a href="/w/Contact" title="Contact"><i class="fa fa-comments fa-lg"></i> Επικοινωνία</a></li>
