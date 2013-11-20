@@ -154,7 +154,7 @@ class LabstrapTemplate extends BaseTemplate {
 
     <div class="row labstrap-card labstrap-card-light">
       <!-- logo -->
-      <div class="logo col-md-6 col-sm-6">
+      <div class="logo col-sm-6">
         <button class="btn btn-default btn-lg labstrap-header-menu-button"
                 href="#"
                 data-toggle="slide"
@@ -168,7 +168,7 @@ class LabstrapTemplate extends BaseTemplate {
         } ?>
       </div>
       <!-- Search and personal menu -->
-      <div class="col-md-6 col-sm-6 navbar navbar-transparent">
+      <div class="col-sm-6 navbar navbar-transparent">
         <div class="navbar-right">
           <?php
             if ($wgSearchPlacement['header']) {
