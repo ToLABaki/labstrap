@@ -182,7 +182,7 @@ class LabstrapTemplate extends BaseTemplate {
       </div>
     </div>
 
-    <nav class="row labstrap-card labstrap-card-dark labstrap-card-slide" id="card-slide-nav">
+    <nav class="row labstrap-card labstrap-card-dark labstrap-card-slide" id="card-slide-nav" data-side="left" data-lock-viewport>
       <button class="close close-inverse"
               href="#"
               data-toggle="slide"

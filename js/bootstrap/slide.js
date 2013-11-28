@@ -38,9 +38,17 @@
     toggle: true
   }
 
+  function getSide($this) {
+    var side = $this.attr('data-side');
+    if (side && side === 'right') {
+      return 'right';
+    }
+    return 'left';
+  }
 
   Slide.prototype.show = function () {
     if (this.transitioning || this.$element.hasClass('in')) return
+    var side = getSide(this.$element);
 
     var startEvent = $.Event('show.bs.slide')
     this.$element.trigger(startEvent)
@@ -48,10 +56,14 @@
 
     var outerWidth = this.$element.outerWidth()
 
+    if (this.$element.attr('data-lock-viewport') !== undefined)
+      $('body, html')
+        .addClass('slide-lock-viewport')
+
     this.$element
       .removeClass('slide')
       .addClass('sliding')
-      .css("left", (-outerWidth) + "px")
+      .css(side, (-outerWidth) + 'px')
 
     this.transitioning = 1
 
@@ -59,7 +71,7 @@
       this.$element
         .removeClass('sliding')
         .addClass('in')
-        .css("left", 0)
+        .css(side, 0)
       this.transitioning = 0
       this.$element.trigger('shown.bs.slide')
     }
@@ -69,17 +81,24 @@
     this.$element
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
-      .css("left", 0)
+      .css(side, 0)
   }
 
   Slide.prototype.hide = function () {
     if (this.transitioning || !this.$element.hasClass('in')) return
+    var side = getSide(this.$element);
 
     var startEvent = $.Event('hide.bs.slide')
     this.$element.trigger(startEvent)
     if (startEvent.isDefaultPrevented()) return
 
     var outerWidth = this.$element.outerWidth()
+
+    // maybe redundant
+
+    if (this.$element.attr('data-lock-viewport') !== undefined)
+      $('body, html')
+        .addClass('slide-lock-viewport')
 
     this.$element
       .addClass('sliding')
@@ -90,6 +109,11 @@
 
     var complete = function () {
       this.transitioning = 0
+
+      if (this.$element.attr('data-lock-viewport') !== undefined)
+        $('body, html')
+          .removeClass('slide-lock-viewport')
+
       this.$element
         .trigger('hidden.bs.slide')
         .removeClass('sliding')
@@ -99,7 +123,7 @@
     if (!$.support.transition) return complete.call(this)
 
     this.$element
-      .css("left", (-outerWidth) + "px")
+      .css(side, (-outerWidth) + 'px')
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
   }

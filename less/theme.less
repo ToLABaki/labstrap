@@ -48,12 +48,7 @@ body {
 
 .labstrap-card-slide {
     @media (max-width: @grid-float-breakpoint) {
-        left: -100%;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        overflow-y: auto;
-        z-index: @zindex-modal;
+        .slide-menu-left();
         
         min-width: 100%;
         @media (min-width: @screen-xs-min) {
@@ -73,11 +68,18 @@ body {
 
             >li+li:after {
                 border-bottom: 1px solid darken(@darkbg-color, 7%);
-                box-shadow: 0 1px lighten(@darkbg-color, 7%);
+                .box-shadow(0 1px lighten(@darkbg-color, 7%));
                 content: "";
                 display: block;
                 margin: 10px 0;
             }
+        }
+
+        // Remove negative row margins
+
+        &.row {
+            margin-left: 0;
+            margin-right: 0;
         }
 
     }

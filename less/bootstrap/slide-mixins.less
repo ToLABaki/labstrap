@@ -1,0 +1,18 @@
+.slide-menu-base() {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: @zindex-modal;
+}
+
+.slide-menu-left() {
+    .slide-menu-base();
+    left: -100%;
+}
+
+.slide-menu-right() {
+    .slide-menu-base();
+    right: -100%;
+}

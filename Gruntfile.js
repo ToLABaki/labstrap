@@ -146,7 +146,9 @@ module.exports = function (grunt) {
             },
             labstrapLess: {
                 files: [
-                    "less/*.less"
+                    "less/*.less",
+                    "less/bootstrap/slide-mixins.less",
+                    "bootstrap/less/mixins.less"
                 ],
                 tasks: [
                     "recess:labstrapCss",
