@@ -58,18 +58,14 @@ module.exports = function (grunt) {
             }
         },
 
-        recess: {
-            options: {
-                compile: true
-            },
-
+        less: {
             bootstrapMediawikiCss: {
                 src: ["less/bootstrap/bootstrap-mediawiki.less"],
                 dest: bootstrapMediawikiBuildPath + "css/bootstrap.css"
             },
             bootstrapMediawikiMinCss: {
                 options: {
-                    compress: true
+                    cleancss: true
                 },
                 src: ["less/bootstrap/bootstrap-mediawiki.less"],
                 dest: bootstrapMediawikiBuildPath + "css/bootstrap.min.css"
@@ -81,7 +77,7 @@ module.exports = function (grunt) {
             },
             bootstrapStandaloneMinCss: {
                 options: {
-                    compress: true
+                    cleancss: true
                 },
                 src: ["less/bootstrap/bootstrap.less"],
                 dest: bootstrapStandaloneBuildPath + "css/bootstrap.min.css"
@@ -93,7 +89,7 @@ module.exports = function (grunt) {
             },
             labstrapMinCss: {
                 options: {
-                    compress: true
+                    cleancss: true
                 },
                 src: ["less/labstrap.less"],
                 dest: mediawikiBuildPath + "css/labstrap.min.css"
@@ -140,8 +136,8 @@ module.exports = function (grunt) {
                     "less/bootstrap/*.less"
                 ],
                 tasks: [
-                    "recess:bootstrapMediawikiCss",
-                    "recess:bootstrapMediawikiMinCss"
+                    "less:bootstrapMediawikiCss",
+                    "less:bootstrapMediawikiMinCss"
                 ]
             },
             labstrapLess: {
@@ -151,8 +147,8 @@ module.exports = function (grunt) {
                     "bootstrap/less/mixins.less"
                 ],
                 tasks: [
-                    "recess:labstrapCss",
-                    "recess:labstrapMinCss"
+                    "less:labstrapCss",
+                    "less:labstrapMinCss"
                 ]
             },
             php: {
@@ -193,7 +189,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-recess");
+    grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-copy-to");
 
     grunt.registerTask(
@@ -202,10 +198,10 @@ module.exports = function (grunt) {
             "clean:distMediawiki",
             "concat:bootstrapMediawikiJs",
             "uglify:bootstrapMediawikiJs",
-            "recess:bootstrapMediawikiCss",
-            "recess:bootstrapMediawikiMinCss",
-            "recess:labstrapCss",
-            "recess:labstrapMinCss",
+            "less:bootstrapMediawikiCss",
+            "less:bootstrapMediawikiMinCss",
+            "less:labstrapCss",
+            "less:labstrapMinCss",
             "copyto:mediawikiFonts",
             "copyto:mediawikiJs",
             "copyto:mediawikiPhp",
@@ -219,8 +215,8 @@ module.exports = function (grunt) {
             "clean:distBootstrap",
             "concat:bootstrapStandaloneJs",
             "uglify:bootstrapStandaloneJs",
-            "recess:bootstrapStandaloneCss",
-            "recess:bootstrapStandaloneMinCss",
+            "less:bootstrapStandaloneCss",
+            "less:bootstrapStandaloneMinCss",
             "copyto:bootstrapFonts",
             "copyto:bootstrapExample"
         ]
