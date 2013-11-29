@@ -95,8 +95,10 @@ textarea {
     font-size: @font-size-large;
 }
 
-.warningbox {
+.warningbox,
+div.mw-warning-with-logexcerpt {
     .alert;
+    .alert-warning;
 }
 
 .successbox {
@@ -107,6 +109,14 @@ textarea {
 .errorbox {
     .alert;
     .alert-danger;
+}
+
+.mw-email-not-authenticated,
+.mw-email-none {
+    .mw-input {
+        .alert !important;
+        .alert-danger !important;
+    }
 }
 
 #preferences {
