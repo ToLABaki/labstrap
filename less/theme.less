@@ -114,9 +114,15 @@ body {
 
 
 header {
-    .labstrap-card:first-child {
-        padding-left: 0;
-        padding-right: 0;
+    .labstrap-card {
+        .navbar-transparent {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
     // Shorten distance between header and main content card for small displays
@@ -152,6 +158,10 @@ footer .labstrap-card {
 
     h1, h2, h3, h4, h5, h6 {
         color: #58595b;
+    }
+
+    hr {
+        border-top: 1px solid @page-header-border-color
     }
 }
 

@@ -1,8 +1,8 @@
 // Mediawiki classes mixed in with bootstrap classes, bootstrap.less needs to be included
 
 .toc {
-    .well;
     margin: 0;
+    &:extend(.well all);
 
     #toctitle h2 {
         font-size: @font-size-base;
@@ -18,9 +18,7 @@
 }
 
 .mw-normal-catlinks {
-    .well;
-    .well-sm;
-
+    &:extend(.well all, .well-sm all);
     margin-top: 1em;
 }
 
@@ -34,16 +32,14 @@
     .img-responsive();
 }
 
-input[type="submit"] {
-    .btn;
-    .btn-default;
+input[type="submit"]:extend(.btn all, .btn-default all) {
 }
 
 #mw-search-top-table input[type="submit"],
 input[type="submit"].mw-htmlform-submit,
 #wpSave,
 #wpLoginAttempt {
-    .btn-primary;
+    &:extend(.btn-primary all);
 }
 
 // input[type="submit"].hidden {
@@ -97,18 +93,13 @@ textarea {
 
 .warningbox,
 div.mw-warning-with-logexcerpt {
-    .alert;
-    .alert-warning;
+    &:extend(.alert all, .alert-warning all);
 }
 
-.successbox {
-    .alert;
-    .alert-success;
+.successbox:extend(.alert all, .alert-success all) {
 }
 
-.errorbox {
-    .alert;
-    .alert-danger;
+.errorbox:extend(.alert all, .alert-danger all) {
 }
 
 .mw-email-not-authenticated,

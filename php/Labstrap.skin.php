@@ -189,7 +189,7 @@ class LabstrapTemplate extends BaseTemplate {
               data-target="#card-slide-nav">
         &times;
       </button>
-      <ul class="nav navbar-nav nav-pills nav-pills-inverse searchform-disabled">
+      <ul class="nav nav-pills nav-pills-inverse searchform-disabled">
         <?php $this->renderNavigation( array( 'PERSONAL_LISTITEMS_VISIBLE_XS' ) ); ?>
         <?php
         $this->renderNavigation( array( 'SIDEBAR' ) );
@@ -394,12 +394,12 @@ if ($this->data['loggedin']) {
             $loginType = 'anonlogin';
           }
 
-          ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><i class="fa fa-sign-in fa-lg"></i><?php echo " " . $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
+          ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><i class="fa fa-sign-in fa-lg">&nbsp;</i><?php echo $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
         }?>
-        <li><a href="/w/To_Labaki:About" title="To Labaki:About"><i class="fa fa-info-circle fa-lg"></i> Σχετικά</a></li>
-        <li><a href="/w/Contact" title="Contact"><i class="fa fa-comments fa-lg"></i> Επικοινωνία</a></li>
-        <li><a href="https://twitter.com/tolabaki"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
-        <li><a href="https://www.facebook.com/ToLABaki"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
+        <li><a hre&nbsp;f="/To_Labaki:About" title="To Labaki:About"><i class="fa fa-info-circle fa-lg">&nbsp;</i>Σχετικά</a></li>
+        <li><a href="/w/Contact" title="Contact"><i class="fa fa-comments fa-lg">&nbsp;</i>Επικοινωνία</a></li>
+        <li><a href="https://twitter.com/tolabaki"><i class="fa fa-twitter fa-lg">&nbsp;</i>Twitter</a></li>
+        <li><a href="https://www.facebook.com/ToLABaki"><i class="fa fa-facebook fa-lg">&nbsp;</i>Facebook</a></li>
       </ul>
 
       <ul>
