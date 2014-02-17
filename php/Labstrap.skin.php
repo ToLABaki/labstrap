@@ -396,7 +396,7 @@ if ($this->data['loggedin']) {
 
           ?><li id="pt-login"><a href="<?php echo $personalTemp[$loginType]['links'][0]['href'] ?>"><i class="fa fa-sign-in fa-lg">&nbsp;</i><?php echo $personalTemp[$loginType]['links'][0]['text']; ?></a></li><?php
         }?>
-        <li><a hre&nbsp;f="/To_Labaki:About" title="To Labaki:About"><i class="fa fa-info-circle fa-lg">&nbsp;</i>Σχετικά</a></li>
+        <li><a href="/To_Labaki:About" title="To Labaki:About"><i class="fa fa-info-circle fa-lg">&nbsp;</i>Σχετικά</a></li>
         <li><a href="/w/Contact" title="Contact"><i class="fa fa-comments fa-lg">&nbsp;</i>Επικοινωνία</a></li>
         <li><a href="https://twitter.com/tolabaki"><i class="fa fa-twitter fa-lg">&nbsp;</i>Twitter</a></li>
         <li><a href="https://www.facebook.com/ToLABaki"><i class="fa fa-facebook fa-lg">&nbsp;</i>Facebook</a></li>
