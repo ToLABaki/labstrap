@@ -2,11 +2,11 @@
     "name": "labstrap"
   , "description": "A mediawiki theme built for the toLABaki hackerspace, based on the strapping theme."
   , "keywords": ["bootstrap", "css", "mediawiki"]
-  , "homepage": "https://code.tolabaki.gr/p/labstrap/"
+  , "homepage": "https://code.tolabaki.gr/tolabaki/labstrap/tree/master"
   , "author": "Alex Katopodis"
   , "repository": {
       "type": "git"
-    , "url": "git://code.tolabaki.gr/labstrap.git"
+    , "url": "https://code.tolabaki.gr/tolabaki/labstrap.git"
   }
   , "devDependencies": {
       "grunt": "~0.4.1"
