@@ -4,16 +4,38 @@
     margin: 0;
     &:extend(.well all);
 
-    #toctitle h2 {
-        font-size: @font-size-base;
-        line-height: @line-height-base;
+    /////////////////////////////////////
+    // mediawiki >= 1.22
+    // see https://gerrit.wikimedia.org/r/#/c/80435/
+
+    display: -moz-inline-block;
+    display: inline-block;
+    display: table;
+
+    // IE <= 7
+
+    zoom: 1;
+    *display: inline;
+
+    > ul {
+        list-style: none;
     }
+
+    /////////////////////////////////////
+    // mediawiki < 1.22
 
     > tbody > tr > td {
         padding: 10px;
         > ul {
             list-style: none;
         }
+    }
+    
+    /////////////////////////////////////
+
+    #toctitle h2 {
+        font-size: @font-size-base;
+        line-height: @line-height-base;
     }
 }
 
